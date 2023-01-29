@@ -8,7 +8,7 @@ public abstract class IEntity
     #region Fields
     public abstract Vector2 Position {get; set;}
     public abstract Texture2D Texture {get; set;}
-    public abstract Rectangle Collider {get; set;}
+    public abstract Rectangle Collider {get;}
     public abstract bool IsActive {get; set;}
     #endregion
 
@@ -26,7 +26,6 @@ public class StaticEntity : IEntity
     public override Rectangle Collider 
     {
         get { return new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height); }
-        set { Collider = value; }
     }
     public override bool IsActive { get; set; }
     #endregion
@@ -65,8 +64,8 @@ public class StaticEntity : IEntity
 public class DynamicEntity : StaticEntity
 {
     #region Variables
-    public Vector2 Velocity;
-    public bool IsMoving;
+    public Vector2 Velocity {get; set;}
+    public bool IsMoving {get; set;}
     #endregion
 
     #region Constructor
