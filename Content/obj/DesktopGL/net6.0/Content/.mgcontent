@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Audio/basic_zombie.wav</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Audio/brute_zombie.wav</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Audio/denizen_zombie.wav</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Audio/pistol.wav</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Audio/shotgun.wav</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Font/font.spritefont</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Sprites/basic_zombie.png</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Sprites/brute_zombie.png</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Sprites/denizen_zombie.png</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Sprites/player.png</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Tiles/box_1.png</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Tiles/box_2.png</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Tiles/flower_1.png</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Tiles/flower_2.png</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Tiles/grass_patch.png</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Tiles/grass.png</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Tiles/rock.png</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Tiles/withered_bush.png</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Tiles/withered_grass.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
