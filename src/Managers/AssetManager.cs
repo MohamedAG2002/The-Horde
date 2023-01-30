@@ -39,40 +39,40 @@ public sealed class AssetManager
     // Loads only the sprites
     public void LoadSprites(ContentManager content)
     {
-        m_SpriteDict.Add("Player", content.Load<Texture2D>("player"));
-        m_SpriteDict.Add("BasicZombie", content.Load<Texture2D>("basic_zombie"));
-        m_SpriteDict.Add("DenizenZombie", content.Load<Texture2D>("denizen_zombie"));
-        m_SpriteDict.Add("BruteZombie", content.Load<Texture2D>("brute_zombie"));
+        m_SpriteDict.Add("Player", content.Load<Texture2D>("Sprites/player"));
+        m_SpriteDict.Add("BasicZombie", content.Load<Texture2D>("Sprites/basic_zombie"));
+        m_SpriteDict.Add("DenizenZombie", content.Load<Texture2D>("Sprites/denizen_zombie"));
+        m_SpriteDict.Add("BruteZombie", content.Load<Texture2D>("Sprites/brute_zombie"));
     }
 
     // Loads only the tiles
     public void LoadTiles(ContentManager content)
     {
-        m_TileDict.Add("Box1", content.Load<Texture2D>("box_1"));
-        m_TileDict.Add("Box2", content.Load<Texture2D>("box_2"));
-        m_TileDict.Add("Flower1", content.Load<Texture2D>("flower_1"));
-        m_TileDict.Add("Flower2", content.Load<Texture2D>("flower_2"));
-        m_TileDict.Add("GrassPatch", content.Load<Texture2D>("grass_patch"));
-        m_TileDict.Add("Grass", content.Load<Texture2D>("grass"));
-        m_TileDict.Add("Rock", content.Load<Texture2D>("rock"));
-        m_TileDict.Add("WitheredBush", content.Load<Texture2D>("withered_bush"));
-        m_TileDict.Add("WitheredGrass", content.Load<Texture2D>("withered_grass"));
+        m_TileDict.Add("Box1", content.Load<Texture2D>("Tiles/box_1"));
+        m_TileDict.Add("Box2", content.Load<Texture2D>("Tiles/box_2"));
+        m_TileDict.Add("Flower1", content.Load<Texture2D>("Tiles/flower_1"));
+        m_TileDict.Add("Flower2", content.Load<Texture2D>("Tiles/flower_2"));
+        m_TileDict.Add("GrassPatch", content.Load<Texture2D>("Tiles/grass_patch"));
+        m_TileDict.Add("Grass", content.Load<Texture2D>("Tiles/grass"));
+        m_TileDict.Add("Rock", content.Load<Texture2D>("Tiles/rock"));
+        m_TileDict.Add("WitheredBush", content.Load<Texture2D>("Tiles/withered_bush"));
+        m_TileDict.Add("WitheredGrass", content.Load<Texture2D>("Tiles/withered_grass"));
     }
 
     // Loads only the sounds
     public void LoadSounds(ContentManager content)
     {
-        m_SoundDict.Add("BasicGrowl", content.Load<SoundEffect>("basic_zombie"));
-        m_SoundDict.Add("BruteGrowl", content.Load<SoundEffect>("brute_zombie"));
-        m_SoundDict.Add("DenizenGrowl", content.Load<SoundEffect>("denizen_zombie"));
-        m_SoundDict.Add("Pistol", content.Load<SoundEffect>("pistol"));
-        m_SoundDict.Add("Shotgun", content.Load<SoundEffect>("shotgun"));
+        m_SoundDict.Add("BasicGrowl", content.Load<SoundEffect>("Audio/basic_zombie"));
+        m_SoundDict.Add("BruteGrowl", content.Load<SoundEffect>("Audio/brute_zombie"));
+        m_SoundDict.Add("DenizenGrowl", content.Load<SoundEffect>("Audio/denizen_zombie"));
+        m_SoundDict.Add("Pistol", content.Load<SoundEffect>("Audio/pistol"));
+        m_SoundDict.Add("Shotgun", content.Load<SoundEffect>("Audio/shotgun"));
     }
 
     // Loads only the font
     public void LoadFonts(ContentManager content)
     {
-        m_FontDict.Add("MainFont", content.Load<SpriteFont>("font"));
+        m_FontDict.Add("MainFont", content.Load<SpriteFont>("Font/font"));
     }
 
     // Returns a specific sprite

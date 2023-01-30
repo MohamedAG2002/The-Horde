@@ -7,10 +7,7 @@ namespace TheHorde;
 public class Player : DynamicEntity
 {
     #region Fields
-    private int m_Direction {get; set;}
-    private bool m_IsAbleToShot {get; set;}
-    private const int MAX_COOLDOWN = 50; 
-    private int m_ShotCooldown {get; set;}
+    
     #endregion
 
     #region Constructor
@@ -19,17 +16,17 @@ public class Player : DynamicEntity
     {
         Velocity = new Vector2(200.0f, 0.0f);
         IsMoving = true;
+        Anim = new Animation(Texture, 4, 10);
 
-        m_Direction = 0; // 0 = player facing left. 1 = player facing right
-        m_IsAbleToShot = true;
-        m_ShotCooldown = MAX_COOLDOWN;
+        
     }
     #endregion
 
     #region Methods
     public override void Update(GameTime gameTime)
     {
-        
+
+
         base.Update(gameTime);
     }
 
@@ -39,14 +36,19 @@ public class Player : DynamicEntity
         if(Keyboard.GetState().IsKeyDown(Keys.A) || Keyboard.GetState().IsKeyDown(Keys.Left))
         {
             Position -= Velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            m_Direction = 0;
+            Anim.Play();
         }
         // Moving to the right
         else if(Keyboard.GetState().IsKeyDown(Keys.D) || Keyboard.GetState().IsKeyDown(Keys.Right))
         {
             Position += Velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            m_Direction = 1;
+            Anim.Play();
         }
+    }
+
+    public void Shoot()
+    {
+
     }
     #endregion
 }
