@@ -47,7 +47,7 @@ public class TileManager
                 else if(currentColor == new Color(0, 255, 0))
                     m_Tiles.Add(new Tile(new Vector2(j * TILE_SIZE, i * TILE_SIZE), AssetManager.Instance().GetTile("Grass")));
                 // Red = Grass patch
-                else if(currentColor == new Color(255, 0, 0))
+                if(currentColor == new Color(255, 0, 0))
                     m_Tiles.Add(new Tile(new Vector2(j * TILE_SIZE, i * TILE_SIZE), AssetManager.Instance().GetTile("GrassPatch")));
             }
         }
@@ -69,8 +69,8 @@ public class TileManager
                 // Blue = Flower1
                 else if(currentColor == new Color(0, 0, 255))
                     m_Tiles.Add(new Tile(new Vector2(j * TILE_SIZE, i * TILE_SIZE), AssetManager.Instance().GetTile("Flower1")));
-                // Pink = Flower2
-                else if(currentColor == new Color(255, 0, 255))
+                // Yellow = Flower2
+                else if(currentColor == new Color(255, 255, 0))
                     m_Tiles.Add(new Tile(new Vector2(j * TILE_SIZE, i * TILE_SIZE), AssetManager.Instance().GetTile("Flower2")));
                 // Gray = Rock
                 else if(currentColor == new Color(80, 80, 80))
