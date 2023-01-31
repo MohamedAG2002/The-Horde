@@ -42,3 +42,5 @@ C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Tiles\gras
 C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Tiles\rock.xnb
 C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Tiles\withered_bush.xnb
 C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Tiles\withered_grass.xnb
+C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Maps\prop_map.xnb
+C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Maps\tile_map.xnb

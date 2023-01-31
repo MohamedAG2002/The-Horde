@@ -14,6 +14,7 @@ public sealed class AssetManager
     private Dictionary<string, Texture2D> m_TileDict = new Dictionary<string, Texture2D>();
     private Dictionary<string, SoundEffect> m_SoundDict = new Dictionary<string, SoundEffect>();
     private Dictionary<string, SpriteFont> m_FontDict = new Dictionary<string, SpriteFont>();
+    private Dictionary<string, Texture2D> m_MapDict = new Dictionary<string, Texture2D>();
     #endregion
 
     #region Constructor
@@ -32,6 +33,7 @@ public sealed class AssetManager
     {
         LoadSprites(content);
         LoadTiles(content);
+        LoadMaps(content);
         LoadSounds(content);
         LoadFonts(content);
     }
@@ -75,6 +77,13 @@ public sealed class AssetManager
         m_FontDict.Add("MainFont", content.Load<SpriteFont>("Font/font"));
     }
 
+    // Loads only the maps
+    public void LoadMaps(ContentManager content)
+    {
+        m_MapDict.Add("TileMap", content.Load<Texture2D>("Maps/tile_map"));
+        m_MapDict.Add("PropMap", content.Load<Texture2D>("Maps/prop_map"));
+    }
+
     // Returns a specific sprite
     public Texture2D GetSprite(string spriteName)
     {
@@ -97,6 +106,12 @@ public sealed class AssetManager
     public SpriteFont GetFont(string fontName)
     {
         return m_FontDict[fontName];
+    }
+
+    // Returns a specific map
+    public Texture2D GetMap(string mapName)
+    {
+        return m_MapDict[mapName];
     }
     #endregion
 }

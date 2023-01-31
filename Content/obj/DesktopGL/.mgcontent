@@ -10,6 +10,8 @@
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Audio/pistol.wav</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Audio/shotgun.wav</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Font/font.spritefont</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Maps/prop_map.png</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Maps/tile_map.png</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Sprites/basic_zombie.png</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Sprites/brute_zombie.png</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Sprites/denizen_zombie.png</File>
@@ -25,6 +27,8 @@
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Tiles/withered_grass.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

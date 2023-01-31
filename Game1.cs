@@ -21,6 +21,7 @@ public class Game1 : Game
 
     #region Managers
     public EntityManager EntityManager;
+    public TileManager TileManager;
     #endregion
 
     public Game1()
@@ -53,6 +54,9 @@ public class Game1 : Game
 
         // Entities init
         EntityManager = new EntityManager();
+
+        // Tiles init
+        TileManager = new TileManager();
     }
 
     protected override void Update(GameTime gameTime)
@@ -73,6 +77,9 @@ public class Game1 : Game
 
         // Rendering stuff here
         _spriteBatch.Begin();
+
+        // Tiles render
+        TileManager.Render(_spriteBatch);
 
         // Entities render
         EntityManager.Render(_spriteBatch);
