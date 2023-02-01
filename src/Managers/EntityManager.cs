@@ -16,16 +16,19 @@ public class EntityManager
     {
         /* Adding entities */
         // Player
-        Entities.Add(new Player(new Vector2(0.0f, Game1.ScreenHeight - 100.0f), AssetManager.Instance().GetSprite("Player")));
+        Entities.Add(new Player(new Vector2(0.0f, Game1.ScreenHeight - 100.0f), AssetManager.Instance().GetSprite("Player"), 3));
     }
     #endregion
 
     #region Methods
     public void Update(GameTime gameTime)
     {
-        foreach(var entity in Entities)
+        for(int i = 0; i < Entities.Count; i++)
         {
-            entity.Update(gameTime);
+            // Deleting the entity from the list if it's inactive
+            if(!Entities[i].IsActive) Entities.RemoveAt(i);
+            // Otherwise, update it as usual
+            else Entities[i].Update(gameTime);
         }
     }
 

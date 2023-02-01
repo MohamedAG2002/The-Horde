@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework.Input;
 namespace TheHorde;
 
 // TO-DO Tomorrow
-// Find a way to render the map
 // Add the zombies
 // Configure collisions
 

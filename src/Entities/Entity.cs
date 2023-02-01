@@ -9,6 +9,8 @@ public abstract class IEntity
     public abstract Vector2 Position {get; set;}
     public abstract Texture2D Texture {get; set;}
     public abstract Rectangle Collider {get;}
+    public abstract int MaxHealth {get; set;}
+    public abstract int Health {get; set;}
     public abstract bool IsActive {get; set;}
     #endregion
 
@@ -27,6 +29,8 @@ public class StaticEntity : IEntity
     {
         get { return new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height); }
     }
+    public override int MaxHealth {get; set;}
+    public override int Health {get; set;}
     public override bool IsActive { get; set; }
     #endregion
 
@@ -36,13 +40,17 @@ public class StaticEntity : IEntity
     {
         Position = new Vector2(0.0f, 0.0f);
         Texture = null;
+        MaxHealth = 0;
+        Health = MaxHealth;
         IsActive = false;
     }
 
-    public StaticEntity(Vector2 position, Texture2D texture)
+    public StaticEntity(Vector2 position, Texture2D texture, int maxHealth)
     {
         Position = position;
         Texture = texture;
+        MaxHealth = maxHealth;
+        Health = MaxHealth;
         IsActive = true;
     }
     #endregion
@@ -50,7 +58,12 @@ public class StaticEntity : IEntity
     #region Methods
     public override void Update(GameTime gameTime)
     {
-        // Update does nothing here...
+        // Clamping the health to not go over the max or under 0
+        if(Health > MaxHealth) Health = MaxHealth;
+        else if(Health < 0) Health = 0;
+
+        // Killing the entity once it is out of health
+        if(Health == 0) IsActive = false;
     }
 
     public override void Render(SpriteBatch spriteBatch)
@@ -70,8 +83,8 @@ public class DynamicEntity : StaticEntity
     #endregion
 
     #region Constructor
-    public DynamicEntity(Vector2 position, Texture2D texture)
-        :base(position, texture)
+    public DynamicEntity(Vector2 position, Texture2D texture, int maxHealth)
+        :base(position, texture, maxHealth)
     {
         Velocity = new Vector2(0.0f, 200.0f);
         IsMoving = true;
@@ -90,6 +103,8 @@ public class DynamicEntity : StaticEntity
 
         // Clamping the position to the window's borders
         Position = new Vector2(MathHelper.Clamp(Position.X, -20.0f, Game1.ScreenWidth - Animation.SpriteWidth + 20.0f), Position.Y);
+
+        base.Update(gameTime);
     }
 
     public override void Render(SpriteBatch spriteBatch)
