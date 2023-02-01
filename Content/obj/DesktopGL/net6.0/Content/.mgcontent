@@ -15,7 +15,9 @@
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Sprites/basic_zombie.png</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Sprites/brute_zombie.png</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Sprites/denizen_zombie.png</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Sprites/pistol_bullet.png</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Sprites/player.png</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Sprites/shootgun_shell.png</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Tiles/box_1.png</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Tiles/box_2.png</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Tiles/flower_1.png</File>
@@ -27,6 +29,8 @@
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Tiles/withered_grass.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

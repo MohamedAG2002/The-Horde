@@ -44,3 +44,5 @@ C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Tiles\with
 C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Tiles\withered_grass.xnb
 C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Maps\prop_map.xnb
 C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Maps\tile_map.xnb
+C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Sprites\pistol_bullet.xnb
+C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Sprites\shootgun_shell.xnb

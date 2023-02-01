@@ -45,6 +45,8 @@ public sealed class AssetManager
         m_SpriteDict.Add("BasicZombie", content.Load<Texture2D>("Sprites/basic_zombie"));
         m_SpriteDict.Add("DenizenZombie", content.Load<Texture2D>("Sprites/denizen_zombie"));
         m_SpriteDict.Add("BruteZombie", content.Load<Texture2D>("Sprites/brute_zombie"));
+        m_SpriteDict.Add("Bullet", content.Load<Texture2D>("Sprites/pistol_bullet"));
+        m_SpriteDict.Add("Shell", content.Load<Texture2D>("Sprites/shootgun_shell"));
     }
 
     // Loads only the tiles

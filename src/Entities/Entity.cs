@@ -17,6 +17,7 @@ public abstract class IEntity
     #region Methods
     public abstract void Update(GameTime gameTime);
     public abstract void Render(SpriteBatch spriteBatch);
+    public abstract void TakeDamage(int damage);
     #endregion
 }
 
@@ -71,6 +72,11 @@ public class StaticEntity : IEntity
         if(IsActive)
             spriteBatch.Draw(Texture, Position, Color.White);
     }
+
+    public override void TakeDamage(int damage)
+    {
+        if(Health != 0) Health -= damage;
+    }
     #endregion
 }
 
@@ -79,7 +85,7 @@ public class DynamicEntity : StaticEntity
     #region Variables
     public Vector2 Velocity {get; set;}
     public bool IsMoving {get; set;}
-    public Animation Anim;
+    public Animation Anim {get; protected set;}
     #endregion
 
     #region Constructor

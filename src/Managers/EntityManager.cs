@@ -8,7 +8,7 @@ namespace TheHorde;
 public class EntityManager
 {
     #region Fields
-    public List<IEntity> Entities = new List<IEntity>();
+    public List<IEntity> Entities {get; private set;} = new List<IEntity>();
     #endregion
 
     #region Constructor
