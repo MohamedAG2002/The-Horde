@@ -17,6 +17,7 @@ public class Player : DynamicEntity
 
     #region Fields
     public List<Bullet> PistolAmmo {get; private set;} = new List<Bullet>();
+    public Animation Anim {get; private set;}
     private bool m_IsAbleToShoot;
     private int m_ShotCoolDown;
     #endregion
@@ -47,7 +48,11 @@ public class Player : DynamicEntity
             m_IsAbleToShoot = true;
         }
 
-        if(m_IsAbleToShoot && IsMoving) Shoot();
+        if(IsMoving) 
+        {
+            Shoot();
+            Anim.Update();
+        }
 
         // Updating the bullets
         for(int i = 0; i < PistolAmmo.Count; i++)
@@ -63,7 +68,8 @@ public class Player : DynamicEntity
 
     public override void Render(SpriteBatch spriteBatch)
     {
-        base.Render(spriteBatch);
+        if(IsActive)
+            Anim.Render(spriteBatch, Position);
         
         // Rendering the bullets
         foreach(var bullet in PistolAmmo)
@@ -91,13 +97,11 @@ public class Player : DynamicEntity
 
     public void Shoot()
     {
-        if(Keyboard.GetState().IsKeyDown(Keys.Space))
+        if(Keyboard.GetState().IsKeyDown(Keys.Space) && m_IsAbleToShoot)
         {
-            PistolAmmo.Add(new Bullet(Position + new Vector2(0.0f, 15.0f), AssetManager.Instance().GetSprite("Bullet"), 1, PISTOL_DAMAGE, PISTOL_MAX_DIST));
+            PistolAmmo.Add(new Bullet(Position + new Vector2(20.0f, 0.0f), AssetManager.Instance().GetSprite("Bullet"), 1, PISTOL_DAMAGE, PISTOL_MAX_DIST));
             AssetManager.Instance().GetSound("Pistol").Play();
             m_IsAbleToShoot = false;
-
-            Console.WriteLine("SHOOT!" + " " + PistolAmmo.Count);
         }
     }
     #endregion

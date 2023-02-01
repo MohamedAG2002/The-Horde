@@ -21,7 +21,7 @@ public class Bullet : DynamicEntity
         
         Damage = damage;
 
-        // The max dustanc at which the bullet will be effective
+        // The max distanc at which the bullet will be effective
         MaxDist = maxDist;
 
         m_OriginalPosition = position;
@@ -43,6 +43,13 @@ public class Bullet : DynamicEntity
         if(m_LifeTime <= 0 || Position.Y < 0) Health = 0;
 
         base.Update(gameTime);
+    
+    }
+
+    public override void Render(SpriteBatch spriteBatch)
+    {
+        if(IsActive)
+            spriteBatch.Draw(Texture, Position, Color.White);
     }
 
     public override void Move(GameTime gameTime)

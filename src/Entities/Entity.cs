@@ -85,7 +85,6 @@ public class DynamicEntity : StaticEntity
     #region Variables
     public Vector2 Velocity {get; set;}
     public bool IsMoving {get; set;}
-    public Animation Anim {get; protected set;}
     #endregion
 
     #region Constructor
@@ -94,18 +93,13 @@ public class DynamicEntity : StaticEntity
     {
         Velocity = new Vector2(0.0f, 200.0f);
         IsMoving = true;
-        Anim = new Animation(Texture, 4, 10);
     }
     #endregion
 
     #region Methods
     public override void Update(GameTime gameTime)
     {
-        if(IsMoving)
-        {
-            Move(gameTime);
-            Anim.Update();
-        }
+        if(IsMoving) Move(gameTime);
 
         // Clamping the position to the window's borders
         Position = new Vector2(MathHelper.Clamp(Position.X, -20.0f, Game1.ScreenWidth - Animation.SpriteWidth + 20.0f), Position.Y);
@@ -113,17 +107,10 @@ public class DynamicEntity : StaticEntity
         base.Update(gameTime);
     }
 
-    public override void Render(SpriteBatch spriteBatch)
-    {
-        if(IsActive)
-            Anim.Render(spriteBatch, Position);
-    }
-
     public virtual void Move(GameTime gameTime)
     {
         // Basic movements
         Position += Velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
-        Anim.Play();
     }
     #endregion
 }

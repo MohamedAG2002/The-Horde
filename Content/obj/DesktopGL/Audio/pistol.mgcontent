@@ -3,7 +3,7 @@
   <SourceFile>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Audio/pistol.wav</SourceFile>
   <SourceTime>2009-07-28T00:37:28+03:00</SourceTime>
   <DestFile>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/bin/DesktopGL/Audio/pistol.xnb</DestFile>
-  <DestTime>2023-02-01T01:21:42.2014733+02:00</DestTime>
+  <DestTime>2023-02-01T23:57:07.1666988+02:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>
