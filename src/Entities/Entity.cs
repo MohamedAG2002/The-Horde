@@ -116,7 +116,7 @@ public class DynamicEntity : StaticEntity
     public virtual void Move(GameTime gameTime)
     {
         // Basic movements
-        Position += Velocity;
+        Position += Velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
         Anim.Play();
     }
     #endregion

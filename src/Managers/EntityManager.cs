@@ -16,7 +16,7 @@ public class EntityManager
     {
         /* Adding entities */
         // Player
-        Entities.Add(new Player(new Vector2(0.0f, Game1.ScreenHeight - 100.0f), AssetManager.Instance().GetSprite("Player"), 3));
+        Entities.Add(new Player(new Vector2(0.0f, Game1.ScreenHeight - 100.0f), AssetManager.Instance().GetSprite("Player"), 100));
     }
     #endregion
 

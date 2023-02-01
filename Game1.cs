@@ -6,6 +6,7 @@ namespace TheHorde;
 
 // TO-DO Tomorrow
 // Add the zombies
+// Add guns and bullets
 // Configure collisions
 
 public class Game1 : Game
