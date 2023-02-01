@@ -3,3 +3,4 @@ Thanks to Hypotis for the tile and prop textures
 
 Thanks to Michel Baradari for the gun shot sounds
 Thanks to artisticdude for the zombie sounds
+Thanks to Independent.nu for the wood breaking sounds

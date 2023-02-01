@@ -75,6 +75,7 @@ public class StaticEntity : IEntity
 
     public override void TakeDamage(int damage)
     {
+        // Taking damage only when there is health
         if(Health != 0) Health -= damage;
     }
     #endregion

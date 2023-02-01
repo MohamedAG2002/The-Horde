@@ -6,9 +6,14 @@ namespace TheHorde;
 
 // TO-DO Tomorrow
 // Add the zombies
-// Add guns and bullets
+// Perhaps add more than one type of gun
 // Add events
 // Configure collisions
+// Add a spawn manager
+
+// PROBLEMS:
+// The barricade_hit.mp3 does not allow the program to run when included in the project
+// Find out a way to play all the audio from the audio manager only
 
 public class Game1 : Game
 {
@@ -23,6 +28,7 @@ public class Game1 : Game
     #region Managers
     public EntityManager EntityManager;
     public TileManager TileManager;
+    public AudioManager AudioManager;
     #endregion
 
     public Game1()
@@ -58,6 +64,9 @@ public class Game1 : Game
 
         // Tiles init
         TileManager = new TileManager();
+
+        // Audio init
+        AudioManager = new AudioManager(EntityManager);
     }
 
     protected override void Update(GameTime gameTime)
