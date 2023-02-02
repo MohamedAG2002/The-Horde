@@ -27,15 +27,23 @@ public class Zombie : DynamicEntity
         MaxDamage = damage;
         Damage = MaxDamage;
         IsAbleToAttack = true;
-        Anim = new Animation(Texture, 4, 10);
 
         // Determines which of the zombie types it is from the texture
         if(texture == AssetManager.Instance().GetSprite("BasicZombie"))
+        {
             Type = "Basic";
+            Anim = new Animation(AssetManager.Instance().GetSprite("BasicZombie"), 4, 10);
+        }
         else if(texture == AssetManager.Instance().GetSprite("BruteZombie"))
+        {
             Type = "Brute";
+            Anim = new Animation(AssetManager.Instance().GetSprite("BruteZombie"), 4, 15);
+        }
         else 
+        {
             Type = "Denizen";
+            Anim = new Animation(AssetManager.Instance().GetSprite("DenizenZombie"), 4, 5);
+        }
 
         m_AttackCoolDown = MAX_ATTACK_COOLDOWN;
     }

@@ -28,7 +28,7 @@ public class Player : DynamicEntity
     {
         Velocity = new Vector2(200.0f, 0.0f);
         IsMoving = true;
-        Anim = new Animation(Texture, 4, 10);
+        Anim = new Animation(Texture, 4, 20);
     
         m_IsAbleToShoot = true;
         m_ShotCoolDown = MAX_COOLDOWN;

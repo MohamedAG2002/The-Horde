@@ -29,6 +29,7 @@ public class SpawnManager
     private int m_Timer;
     private int m_MaxTime;
     private int m_DifficultyTimer;
+    private int m_SpawnCounter;
     #endregion
 
     #region Constructor
@@ -37,10 +38,11 @@ public class SpawnManager
         Position = position;
 
         m_EntityManager = entityManager;
-        
+
         m_Timer = 0;
         m_MaxTime = 200;
         m_DifficultyTimer = 0;
+        m_SpawnCounter = 1;
     }
     #endregion
 
@@ -60,13 +62,49 @@ public class SpawnManager
         if(m_Timer >= m_MaxTime)
         {
             // Adding a zombie
-            m_EntityManager.Entities.Add(new Zombie(Position, AssetManager.Instance().GetSprite("BasicZombie"), BASIC_HEALTH, BASIC_DAMAGE, BASIC_SPEED));
+            if(m_SpawnCounter % 10 == 0) SpawnEntity(ZombieType.Brute);
+            else if(m_SpawnCounter % 5 == 0) SpawnEntity(ZombieType.Denizen);
+            else SpawnEntity(ZombieType.Basic);
             
             // Reseting the position randomly
             Position = new Vector2((float)Game1.Random.Next(64, Game1.ScreenWidth - 64), 0.0f);
 
             // Reseting the timer
             m_Timer = 0;
+
+            // Everytime a zombie spawns this counter will go up.
+            // This will help with selecting which zombie to spawn next turn.
+            // For example, if every 5  there is a brute zombie, and every 3 there is a denizen zombie.
+            m_SpawnCounter++;
+        }
+    }
+
+    // Spawns an entity based on the given type
+    public void SpawnEntity(ZombieType type)
+    {
+        switch(type)
+        {
+            case ZombieType.Basic:
+                m_EntityManager.Entities.Add(new Zombie(Position, 
+                                                        AssetManager.Instance().GetSprite("BasicZombie"),  
+                                                        BASIC_HEALTH, 
+                                                        BASIC_DAMAGE, 
+                                                        BASIC_SPEED));
+                break;
+            case ZombieType.Brute:
+                m_EntityManager.Entities.Add(new Zombie(Position, 
+                                                        AssetManager.Instance().GetSprite("BruteZombie"),  
+                                                        BRUTE_HEALTH, 
+                                                        BRUTE_DAMAGE, 
+                                                        BRUTE_SPEED));
+                break;
+            case ZombieType.Denizen:
+                m_EntityManager.Entities.Add(new Zombie(Position, 
+                                                        AssetManager.Instance().GetSprite("DenizenZombie"),  
+                                                        DENIZEN_HEALTH, 
+                                                        DENIZEN_DAMAGE, 
+                                                        DENIZEN_SPEED));
+                break;
         }
     }
     #endregion
