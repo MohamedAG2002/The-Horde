@@ -10,8 +10,8 @@ namespace TheHorde;
 public class Player : DynamicEntity
 {
     #region Consts
-    private const int MAX_COOLDOWN = 50;
-    private const int PISTOL_MAX_DIST = 50;
+    private const int MAX_COOLDOWN = 30;
+    private const int PISTOL_MAX_DIST = 150;
     private const int PISTOL_DAMAGE = 20;
     #endregion
 

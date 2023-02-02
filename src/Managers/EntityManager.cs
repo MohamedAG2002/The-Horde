@@ -16,7 +16,13 @@ public class EntityManager
     #region Delegates
     public delegate void EntityAudio();
     public delegate void ZombieAudio(string zombieType);
-    public delegate void EntityCollision(IEntity entity);
+    public delegate void EntityCollision(IEntity entity, int damage);
+    public delegate void BulletCollision(Bullet bullet, IEntity entity);
+    #endregion
+
+    #region Events
+    public event EntityCollision EntityCollisionEvent;
+    public event BulletCollision BulletCollisionEvent;
     #endregion
 
     #region Constructor
@@ -37,6 +43,29 @@ public class EntityManager
             if(!Entities[i].IsActive) Entities.RemoveAt(i);
             // Otherwise, update it as usual
             else Entities[i].Update(gameTime);
+        }
+
+        CollisionUpdate();
+    }
+
+    public void CollisionUpdate()
+    {
+        Player player = Entities[0] as Player;
+
+        foreach(var entity in Entities)
+        {
+            if(entity is Zombie)
+            {
+                // Collision Bullet VS. Zombie
+                foreach(var bullet in player.PistolAmmo)
+                {  
+                    if(entity.Collider.Intersects(bullet.Collider))
+                    BulletCollisionEvent?.Invoke(bullet, entity);
+                }
+
+                // Collision: Barricade VS. Zombie
+                
+            }
         }
     }
 

@@ -7,11 +7,8 @@ using System;
 namespace TheHorde;
 
 // TO-DO Tomorrow
-// Add a spawn manager
-// Add the zombies
 // Perhaps add more than one type of gun
-// Add events
-// Configure collisions
+// Add a scoring system
 
 // PROBLEMS:
 // The barricade_hit.mp3 does not allow the program to run when included in the project
@@ -30,10 +27,10 @@ public class Game1 : Game
     #endregion
 
     #region Managers
+    public TileManager TileManager;
     public EntityManager EntityManager;
     public SpawnManager SpawnManager;
-    public TileManager TileManager;
-    public AudioManager AudioManager;
+    public CollisionManager CollisionManager;
     #endregion
 
     public Game1()
@@ -66,17 +63,17 @@ public class Game1 : Game
         // Assets init
         AssetManager.Instance().LoadAssets(Content);
 
+        // Tiles init
+        TileManager = new TileManager();
+
         // Entities init
         EntityManager = new EntityManager();
 
         // Spawner init
         SpawnManager = new SpawnManager(EntityManager, new Vector2(64.0f, 0.0f));
 
-        // Tiles init
-        TileManager = new TileManager();
-
-        // Audio init
-        AudioManager = new AudioManager(EntityManager);
+        // Collisions init
+        CollisionManager = new CollisionManager(EntityManager);
     }
 
     protected override void Update(GameTime gameTime)
