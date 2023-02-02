@@ -5,15 +5,16 @@ using Microsoft.Xna.Framework.Input;
 namespace TheHorde;
 
 // TO-DO Tomorrow
+// Add a spawn manager
 // Add the zombies
 // Perhaps add more than one type of gun
 // Add events
 // Configure collisions
-// Add a spawn manager
 
 // PROBLEMS:
 // The barricade_hit.mp3 does not allow the program to run when included in the project
 // Find out a way to play all the audio from the audio manager only
+// Overall, work on the audio manager
 
 public class Game1 : Game
 {

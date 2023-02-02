@@ -15,11 +15,7 @@ public class AudioManager
     public AudioManager(EntityManager entityManager)
     {
         m_EntityManager = entityManager;
-        m_Volume = 1.0f;
-
-        entityManager.BulletAudioEvent += OnBulletShoot;
-        entityManager.ZombieAudioEvent += OnZombieGrowl;
-        entityManager.BarricadeAudioEvent += OnBarricadeHit;
+        m_Volume = 100.0f;
     }
     #endregion
 
@@ -41,7 +37,7 @@ public class AudioManager
 
     public void OnBarricadeHit()
     {
-        AssetManager.Instance().GetSound("Barricade").Play(m_Volume, 0.0f, 0.0f);
+        //AssetManager.Instance().GetSound("Barricade").Play(m_Volume, 0.0f, 0.0f);
     }
     #endregion
 }

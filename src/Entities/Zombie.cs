@@ -6,13 +6,14 @@ namespace TheHorde;
 public class Zombie : DynamicEntity
 {
     #region Consts
-    private const int MAX_ATTACK_COOLDOWN = 100;
+    private const int MAX_ATTACK_COOLDOWN = 150;
     #endregion
 
     #region Fields
     public readonly int MaxDamage;
     public int Damage {get; set;}
     public bool IsAbleToAttack {get; set;}
+    public string Type {get; private set;}
     public Animation Anim {get; private set;}
     private int m_AttackCoolDown;
     #endregion
@@ -27,6 +28,14 @@ public class Zombie : DynamicEntity
         Damage = MaxDamage;
         IsAbleToAttack = true;
         Anim = new Animation(Texture, 4, 10);
+
+        // Determines which of the zombie types it is from the texture
+        if(texture == AssetManager.Instance().GetSprite("BasicZombie"))
+            Type = "Basic";
+        else if(texture == AssetManager.Instance().GetSprite("BruteZombie"))
+            Type = "Brute";
+        else 
+            Type = "Denizen";
 
         m_AttackCoolDown = MAX_ATTACK_COOLDOWN;
     }
@@ -70,6 +79,21 @@ public class Zombie : DynamicEntity
         if(IsAbleToAttack)
         {
             Damage = MaxDamage;
+            
+            // Plays the appropriate zombie sound depending on the type
+            switch(Type)
+            {
+                case "Basic":
+                    AssetManager.Instance().GetSound("BasicGrowl").Play();
+                    break;
+                case "Brute":
+                    AssetManager.Instance().GetSound("BruteGrowl").Play();
+                    break;
+                case "Denizen":
+                    AssetManager.Instance().GetSound("DenizenGrowl").Play();
+                    break;
+            }
+
             IsAbleToAttack = false;
         }
     }

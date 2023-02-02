@@ -71,7 +71,7 @@ public sealed class AssetManager
         m_SoundDict.Add("DenizenGrowl", content.Load<SoundEffect>("Audio/denizen_zombie"));
         m_SoundDict.Add("Pistol", content.Load<SoundEffect>("Audio/pistol"));
         m_SoundDict.Add("Shotgun", content.Load<SoundEffect>("Audio/shotgun"));
-        m_SoundDict.Add("Barricade", content.Load<SoundEffect>("Audio/barricade_hit"));
+        //m_SoundDict.Add("Barricade", content.Load<SoundEffect>("Audio/barricade_hit"));
     }
 
     // Loads only the font
