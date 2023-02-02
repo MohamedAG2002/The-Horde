@@ -1,6 +1,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+using System.Collections.Generic;
+
 namespace TheHorde;
 
 public abstract class IEntity
@@ -16,6 +18,7 @@ public abstract class IEntity
 
     #region Methods
     public abstract void Update(GameTime gameTime);
+    public abstract void CollisionUpdate(List<IEntity> entities);
     public abstract void Render(SpriteBatch spriteBatch);
     public abstract void TakeDamage(int damage);
     #endregion
@@ -65,6 +68,11 @@ public class StaticEntity : IEntity
 
         // Killing the entity once it is out of health
         if(Health == 0) IsActive = false;
+    }
+
+    public override void CollisionUpdate(List<IEntity> entities)
+    {
+        
     }
 
     public override void Render(SpriteBatch spriteBatch)

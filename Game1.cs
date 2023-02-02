@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+using System;
+
 namespace TheHorde;
 
 // TO-DO Tomorrow
@@ -24,10 +26,12 @@ public class Game1 : Game
     #region Utility variables
     public static int ScreenWidth;
     public static int ScreenHeight;
+    public static Random Random;
     #endregion
 
     #region Managers
     public EntityManager EntityManager;
+    public SpawnManager SpawnManager;
     public TileManager TileManager;
     public AudioManager AudioManager;
     #endregion
@@ -41,8 +45,10 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
+        // Utility variables init
         ScreenWidth = 384;
         ScreenHeight = 512;
+        Random = new Random();
 
         // Changing the game window size
         _graphics.PreferredBackBufferWidth = ScreenWidth;
@@ -63,6 +69,9 @@ public class Game1 : Game
         // Entities init
         EntityManager = new EntityManager();
 
+        // Spawner init
+        SpawnManager = new SpawnManager(EntityManager, new Vector2(64.0f, 0.0f));
+
         // Tiles init
         TileManager = new TileManager();
 
@@ -76,6 +85,9 @@ public class Game1 : Game
             Exit();
 
         
+        // Spawner init
+        SpawnManager.Update();
+
         // Entities update
         EntityManager.Update(gameTime);
 
