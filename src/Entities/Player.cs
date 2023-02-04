@@ -22,13 +22,17 @@ public class Player : DynamicEntity
     private int m_ShotCoolDown;
     #endregion
 
+    #region Events
+    public static event BulletShotAudio BulletShotAudioEvent;
+    #endregion
+
     #region Constructor
     public Player(Vector2 position, Texture2D texture, int maxHealth)
         :base(position, texture, maxHealth)
     {
         Velocity = new Vector2(200.0f, 0.0f);
         IsMoving = true;
-        Anim = new Animation(Texture, 4, 20);
+        Anim = new Animation(Texture, 4, 15);
     
         m_IsAbleToShoot = true;
         m_ShotCoolDown = MAX_COOLDOWN;
@@ -100,7 +104,7 @@ public class Player : DynamicEntity
         if(Keyboard.GetState().IsKeyDown(Keys.Space) && m_IsAbleToShoot)
         {
             PistolAmmo.Add(new Bullet(Position + new Vector2(27.0f, 0.0f), AssetManager.Instance().GetSprite("Bullet"), 1, PISTOL_DAMAGE, PISTOL_MAX_DIST));
-            AssetManager.Instance().GetSound("Pistol").Play();
+            BulletShotAudioEvent?.Invoke(BulletType.Pistol);
             m_IsAbleToShoot = false;
         }
     }

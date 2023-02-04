@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -11,6 +12,11 @@ public class Bullet : DynamicEntity
     private const int MAX_LIFETIME = 100;
     private int m_LifeTime;
     private Vector2 m_OriginalPosition;
+    #endregion
+
+    #region Events
+    public static event BulletCollision BulletCollisionEvent;
+    public static event ZombieDeathAudio ZombieDeathAudioEvent;
     #endregion
 
     #region Constructor
@@ -44,6 +50,21 @@ public class Bullet : DynamicEntity
 
         base.Update(gameTime);
     
+    }
+
+    public override void CollisionUpdate(List<IEntity> entities)
+    {
+        foreach(var entity in entities)
+        {
+            if(entity is Zombie)
+            {
+                if(Collider.Contains(entity.Collider))
+                {
+                    BulletCollisionEvent?.Invoke(this, entity as Zombie);
+                    ZombieDeathAudioEvent?.Invoke();
+                }
+            }
+        }
     }
 
     public override void Render(SpriteBatch spriteBatch)

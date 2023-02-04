@@ -46,3 +46,5 @@ C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Maps\prop_
 C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Maps\tile_map.xnb
 C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Sprites\pistol_bullet.xnb
 C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Sprites\shootgun_shell.xnb
+C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Audio\barricade_hit.xnb
+C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Audio\zombie_death.xnb

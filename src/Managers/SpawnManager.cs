@@ -1,7 +1,5 @@
 using Microsoft.Xna.Framework;
 
-using System;
-
 namespace TheHorde;
 
 public class SpawnManager
@@ -40,7 +38,7 @@ public class SpawnManager
         m_EntityManager = entityManager;
 
         m_Timer = 0;
-        m_MaxTime = 200;
+        m_MaxTime = 150;
         m_DifficultyTimer = 0;
         m_SpawnCounter = 1;
     }

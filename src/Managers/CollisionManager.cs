@@ -7,25 +7,22 @@ namespace TheHorde;
 
 public class CollisionManager
 {
-    #region Fields
-    private EntityManager m_EntityManager;
-    #endregion
-
     #region Constructor
-    public CollisionManager(EntityManager entityManager)
+    public CollisionManager()
     {
-        m_EntityManager = entityManager;
-    
         // Subscribing to events
-        m_EntityManager.EntityCollisionEvent += OnEntityCollision;
-        m_EntityManager.BulletCollisionEvent += OnBulletCollision;
+        Zombie.BarricadeCollisionEvent += OnBarricadeCollision;
+        Bullet.BulletCollisionEvent += OnBulletCollision;
     }
     #endregion
 
     #region Methods
-    public void OnEntityCollision(IEntity entity, int damage)
+    public void OnBarricadeCollision(StaticEntity barricade, Zombie zombie)
     {
-        entity.TakeDamage(damage);
+        zombie.Velocity = new Vector2(0.0f, 0.0f);
+        zombie.Anim.Stop();
+        
+        barricade.TakeDamage(zombie.Damage);
     }
 
     public void OnBulletCollision(Bullet bullet, IEntity entity)

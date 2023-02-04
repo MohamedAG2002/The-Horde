@@ -1,13 +1,15 @@
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
+using System.Collections.Generic;
+using System;
 
 namespace TheHorde;
 
 public class Zombie : DynamicEntity
 {
     #region Consts
-    private const int MAX_ATTACK_COOLDOWN = 150;
+    private const int MAX_ATTACK_COOLDOWN = 200;
     #endregion
 
     #region Fields
@@ -19,6 +21,11 @@ public class Zombie : DynamicEntity
     private int m_AttackCoolDown;
     #endregion
 
+    #region Events
+    public static event BarricadeCollision BarricadeCollisionEvent;
+    public static event ZombieGrowlAudio ZombieGrowlAudioEvent;
+    #endregion
+
     #region Constructor
     public Zombie(Vector2 position, Texture2D texture, int health, int damage, float speed)
         :base(position, texture, health)
@@ -26,7 +33,7 @@ public class Zombie : DynamicEntity
         Velocity = new Vector2(0.0f, speed);
 
         MaxDamage = damage;
-        Damage = MaxDamage;
+        Damage = 0;
         IsAbleToAttack = true;
 
         // Determines which of the zombie types it is from the texture
@@ -55,7 +62,7 @@ public class Zombie : DynamicEntity
     {
         m_AttackCoolDown--;
 
-        if(m_AttackCoolDown <= 0)
+        if(m_AttackCoolDown == 0)
         {
             m_AttackCoolDown = MAX_ATTACK_COOLDOWN;
             IsAbleToAttack = true;
@@ -71,6 +78,14 @@ public class Zombie : DynamicEntity
         base.Update(gameTime);
     }
 
+    public override void CollisionUpdate(List<IEntity> entities)
+    {
+        StaticEntity barricade = entities[1] as StaticEntity;
+
+        // Collision: Zombie VS. Barricade 
+        if(Collider.Intersects(barricade.Collider))
+            BarricadeCollisionEvent?.Invoke(barricade, this);
+    }
     public override void Render(SpriteBatch spriteBatch)
     {
         if(IsActive)
@@ -88,22 +103,21 @@ public class Zombie : DynamicEntity
         if(IsAbleToAttack)
         {
             Damage = MaxDamage;
+            IsAbleToAttack = false;
             
             // Plays the appropriate zombie sound depending on the type
             switch(Type)
             {
                 case "Basic":
-                    AssetManager.Instance().GetSound("BasicGrowl").Play();
+                    ZombieGrowlAudioEvent?.Invoke(ZombieType.Basic);
                     break;
                 case "Brute":
-                    AssetManager.Instance().GetSound("BruteGrowl").Play();
+                    ZombieGrowlAudioEvent?.Invoke(ZombieType.Brute);
                     break;
                 case "Denizen":
-                    AssetManager.Instance().GetSound("DenizenGrowl").Play();
+                    ZombieGrowlAudioEvent?.Invoke(ZombieType.Denizen);
                     break;
             }
-
-            IsAbleToAttack = false;
         }
     }
     #endregion

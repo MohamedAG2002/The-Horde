@@ -13,6 +13,18 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Audio/barricade_hit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/barricade_hit.wav
+
+#begin Audio/barricade_hit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/barricade_hit.wav
+
 #begin Audio/basic_zombie.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -42,6 +54,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Audio/shotgun.wav
+
+#begin Audio/zombie_death.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/zombie_death.wav
 
 #begin Font/font.spritefont
 /importer:FontDescriptionImporter

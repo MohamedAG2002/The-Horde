@@ -11,6 +11,8 @@ public class Animation
     public int FrameSpeed {get; set;}
     public static int SpriteWidth;
     public static int SpriteHeight;
+
+    private bool m_IsAnimating;
     private int m_CurrentFrame;
     private int m_Timer;
     private int m_AnimDirection;
@@ -27,6 +29,7 @@ public class Animation
         SpriteWidth = SpriteSheet.Width / Frames;
         SpriteHeight = SpriteSheet.Height;
 
+        m_IsAnimating = true;
         m_CurrentFrame = 0;
         m_Timer = 0;
         m_AnimDirection = 0;
@@ -39,9 +42,6 @@ public class Animation
         // Switching the direction of the frames once it's on either side of the spritesheet
         if(m_CurrentFrame == Frames - 1) m_AnimDirection = -1;
         else if(m_CurrentFrame == 0) m_AnimDirection = 1;
-
-        SpriteWidth = SpriteSheet.Width / Frames;
-        SpriteHeight = SpriteSheet.Height;
     }
 
     public void Render(SpriteBatch spriteBatch, Vector2 position)
@@ -55,6 +55,8 @@ public class Animation
     // Plays an animation at a fixed speed
     public void Play()
     {
+        if(!m_IsAnimating) return;
+
         m_Timer++;
 
         if(m_Timer >= FrameSpeed)
@@ -63,6 +65,11 @@ public class Animation
 
             m_Timer = 0;
         }
+    }
+
+    public void Stop()
+    {
+        m_IsAnimating = false;
     }
     #endregion
 }

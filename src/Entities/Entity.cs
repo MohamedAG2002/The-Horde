@@ -38,6 +38,17 @@ public class StaticEntity : IEntity
     public override bool IsActive { get; set; }
     #endregion
 
+    #region Delegates
+    // Collision delegates
+    public delegate void BulletCollision(Bullet bullet, Zombie zombie);
+    public delegate void BarricadeCollision(StaticEntity barricade, Zombie zombie);
+    
+    // Audio delegates 
+    public delegate void BulletShotAudio(BulletType bulletType);
+    public delegate void ZombieGrowlAudio(ZombieType zombieType);
+    public delegate void ZombieDeathAudio();
+    #endregion
+
     #region Constructor
     // Default constructor
     public StaticEntity()
@@ -72,7 +83,7 @@ public class StaticEntity : IEntity
 
     public override void CollisionUpdate(List<IEntity> entities)
     {
-        
+        // Does nothing here   
     }
 
     public override void Render(SpriteBatch spriteBatch)

@@ -7,13 +7,13 @@ using System;
 namespace TheHorde;
 
 // TO-DO Tomorrow
+// Add the barricade
 // Perhaps add more than one type of gun
 // Add a scoring system
+// Add a visul health bar
 
 // PROBLEMS:
 // The barricade_hit.mp3 does not allow the program to run when included in the project
-// Find out a way to play all the audio from the audio manager only
-// Overall, work on the audio manager
 
 public class Game1 : Game
 {
@@ -67,13 +67,13 @@ public class Game1 : Game
         TileManager = new TileManager();
 
         // Entities init
-        EntityManager = new EntityManager();
+        EntityManager = new EntityManager(GraphicsDevice);
 
         // Spawner init
         SpawnManager = new SpawnManager(EntityManager, new Vector2(64.0f, 0.0f));
 
         // Collisions init
-        CollisionManager = new CollisionManager(EntityManager);
+        CollisionManager = new CollisionManager();
     }
 
     protected override void Update(GameTime gameTime)
@@ -103,6 +103,9 @@ public class Game1 : Game
 
         // Entities render
         EntityManager.Render(_spriteBatch);
+
+        // UI render
+        _spriteBatch.DrawString(AssetManager.Instance().GetFont("MainFont"), "Barricade: " + EntityManager.Entities[1].Health, new Vector2(10, 10), Color.Black);
 
         _spriteBatch.End();
 

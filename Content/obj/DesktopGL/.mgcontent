@@ -4,11 +4,13 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Audio/barricade_hit.wav</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Audio/basic_zombie.wav</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Audio/brute_zombie.wav</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Audio/denizen_zombie.wav</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Audio/pistol.wav</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Audio/shotgun.wav</File>
+    <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Audio/zombie_death.wav</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Font/font.spritefont</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Maps/prop_map.png</File>
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Maps/tile_map.png</File>
@@ -29,6 +31,8 @@
     <File>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Tiles/withered_grass.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
