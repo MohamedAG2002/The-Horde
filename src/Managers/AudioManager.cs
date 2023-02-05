@@ -11,7 +11,7 @@ public class AudioManager
     public AudioManager()
     {
         Zombie.ZombieGrowlAudioEvent += OnZombieGrowl;
-        Bullet.ZombieDeathAudioEvent += OnZombieDeath;
+        Zombie.ZombieDeathAudioEvent += OnZombieDeath;
         Player.BulletShotAudioEvent += OnBulletShot;
     }
     #endregion

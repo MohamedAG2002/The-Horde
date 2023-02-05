@@ -16,7 +16,6 @@ public class Bullet : DynamicEntity
 
     #region Events
     public static event BulletCollision BulletCollisionEvent;
-    public static event ZombieDeathAudio ZombieDeathAudioEvent;
     #endregion
 
     #region Constructor
@@ -58,11 +57,8 @@ public class Bullet : DynamicEntity
         {
             if(entity is Zombie)
             {
-                if(Collider.Contains(entity.Collider))
-                {
+                if(Collider.Intersects(entity.Collider))
                     BulletCollisionEvent?.Invoke(this, entity as Zombie);
-                    ZombieDeathAudioEvent?.Invoke();
-                }
             }
         }
     }

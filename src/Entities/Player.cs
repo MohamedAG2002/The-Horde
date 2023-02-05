@@ -70,6 +70,14 @@ public class Player : DynamicEntity
         base.Update(gameTime);
     }
 
+    public override void CollisionUpdate(List<IEntity> entities)
+    {
+        foreach(var bullet in PistolAmmo)
+        {
+            bullet.CollisionUpdate(entities);
+        }
+    }
+
     public override void Render(SpriteBatch spriteBatch)
     {
         if(IsActive)

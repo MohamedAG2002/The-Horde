@@ -24,6 +24,7 @@ public class Zombie : DynamicEntity
     #region Events
     public static event BarricadeCollision BarricadeCollisionEvent;
     public static event ZombieGrowlAudio ZombieGrowlAudioEvent;
+    public static event ZombieDeathAudio ZombieDeathAudioEvent;
     #endregion
 
     #region Constructor
@@ -74,6 +75,10 @@ public class Zombie : DynamicEntity
             Attack();
             Anim.Update();
         }
+
+        // Plays the approriate sound when the zombie dies
+        if(Health == 0) 
+            ZombieDeathAudioEvent?.Invoke();
 
         base.Update(gameTime);
     }

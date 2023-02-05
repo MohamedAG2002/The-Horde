@@ -13,7 +13,9 @@ namespace TheHorde;
 // Add a visul health bar
 
 // PROBLEMS:
-// The barricade_hit.mp3 does not allow the program to run when included in the project
+// Audio playing is a bit inconsistent
+// One zombie will take damage and the other dies in his place, what's about wiht that?
+// Barricade needs a bit of refining as well
 
 public class Game1 : Game
 {
@@ -31,6 +33,7 @@ public class Game1 : Game
     public EntityManager EntityManager;
     public SpawnManager SpawnManager;
     public CollisionManager CollisionManager;
+    public AudioManager AudioManager;
     #endregion
 
     public Game1()
@@ -68,6 +71,9 @@ public class Game1 : Game
 
         // Entities init
         EntityManager = new EntityManager(GraphicsDevice);
+
+        // Audio init
+        AudioManager = new AudioManager();
 
         // Spawner init
         SpawnManager = new SpawnManager(EntityManager, new Vector2(64.0f, 0.0f));
