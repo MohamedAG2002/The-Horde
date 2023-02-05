@@ -13,8 +13,6 @@ namespace TheHorde;
 // Add a visul health bar
 
 // PROBLEMS:
-// Audio playing is a bit inconsistent
-// One zombie will take damage and the other dies in his place, what's about wiht that?
 // Barricade needs a bit of refining as well
 
 public class Game1 : Game

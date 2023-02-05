@@ -7,9 +7,17 @@ namespace TheHorde;
 
 public class AudioManager
 {
+    #region Fields
+    public float EffectsVolume;
+    public float Pitch;
+    #endregion
+
     #region Constructor
     public AudioManager()
     {
+        EffectsVolume = 0.2f;
+        Pitch = 0.0f;
+
         Zombie.ZombieGrowlAudioEvent += OnZombieGrowl;
         Zombie.ZombieDeathAudioEvent += OnZombieDeath;
         Player.BulletShotAudioEvent += OnBulletShot;
@@ -19,7 +27,7 @@ public class AudioManager
     #region Methods
     public void OnZombieDeath()
     {
-        AssetManager.Instance().GetSound("ZombieDeath").Play();
+        AssetManager.Instance().GetSound("ZombieDeath").Play(EffectsVolume, Pitch, 0.0f);
     }
 
     public void OnZombieGrowl(ZombieType zombieType)
@@ -27,20 +35,20 @@ public class AudioManager
         switch(zombieType)
         {
             case ZombieType.Basic:
-                AssetManager.Instance().GetSound("BasicGrowl").Play();
+                AssetManager.Instance().GetSound("BasicGrowl").Play(EffectsVolume, Pitch, 0.0f);
                 break;
             case ZombieType.Brute:
-                AssetManager.Instance().GetSound("BruteGrowl").Play();
+                AssetManager.Instance().GetSound("BruteGrowl").Play(EffectsVolume, Pitch, 0.0f);
                 break;
             case ZombieType.Denizen:
-                AssetManager.Instance().GetSound("DenizenGrowl").Play();
+                AssetManager.Instance().GetSound("DenizenGrowl").Play(EffectsVolume, Pitch, 0.0f);
                 break;    
         }
     }
 
     public void OnBulletShot(BulletType bulletType)
     {
-        AssetManager.Instance().GetSound("Pistol").Play();
+        AssetManager.Instance().GetSound("Pistol").Play(EffectsVolume, Pitch, 0.0f);
     }
     #endregion
 }

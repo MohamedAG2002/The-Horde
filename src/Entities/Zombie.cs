@@ -75,11 +75,11 @@ public class Zombie : DynamicEntity
             Anim.Update();
         }
 
+        base.Update(gameTime);
+    
         // Plays the approriate sound when the zombie dies
         if(Health == 0) 
             ZombieDeathAudioEvent?.Invoke();
-
-        base.Update(gameTime);
     }
 
     public override void CollisionUpdate(List<IEntity> entities)
