@@ -57,7 +57,7 @@ public class Bullet : DynamicEntity
         {
             if(entity is Zombie)
             {
-                if(Collider.Intersects(entity.Collider))
+                if(OnPixelCollision(this, entity))
                     BulletCollisionEvent?.Invoke(this, entity as Zombie);
             }
         }

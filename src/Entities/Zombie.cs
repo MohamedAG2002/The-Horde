@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using System.Collections.Generic;
-using System;
 
 namespace TheHorde;
 
@@ -88,7 +87,7 @@ public class Zombie : DynamicEntity
         StaticEntity barricade = entities[1] as StaticEntity;
 
         // Collision: Zombie VS. Barricade 
-        if(Collider.Intersects(barricade.Collider))
+        if(OnPixelCollision(this, barricade))
             BarricadeCollisionEvent?.Invoke(barricade, this);
     }
     public override void Render(SpriteBatch spriteBatch)
