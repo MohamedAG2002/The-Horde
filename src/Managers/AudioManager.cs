@@ -15,11 +15,12 @@ public class AudioManager
     #region Constructor
     public AudioManager()
     {
-        EffectsVolume = 0.2f;
+        EffectsVolume = 0.3f;
         Pitch = 0.0f;
 
         Zombie.ZombieGrowlAudioEvent += OnZombieGrowl;
         Zombie.ZombieDeathAudioEvent += OnZombieDeath;
+        Zombie.BarricadeHitAudioEvent += OnBarricadeHit;
         Player.BulletShotAudioEvent += OnBulletShot;
     }
     #endregion
@@ -49,6 +50,11 @@ public class AudioManager
     public void OnBulletShot(BulletType bulletType)
     {
         AssetManager.Instance().GetSound("Pistol").Play(EffectsVolume, Pitch, 0.0f);
+    }
+
+    public void OnBarricadeHit()
+    {
+        AssetManager.Instance().GetSound("Barricade").Play(EffectsVolume, Pitch, 0.0f);
     }
     #endregion
 }

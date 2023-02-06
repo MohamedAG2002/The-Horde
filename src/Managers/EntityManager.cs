@@ -1,8 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
-using System;
 using System.Collections.Generic;
 
 namespace TheHorde;
@@ -26,7 +24,7 @@ public class EntityManager
         Entities.Add(new Player(new Vector2(0.0f, Game1.ScreenHeight - 100.0f), AssetManager.Instance().GetSprite("Player"), 100));
 
         // Barricade(creates an invisible box that will act as the barricade)
-        Entities.Add(new StaticEntity(new Vector2(0.0f, Game1.ScreenHeight - 128.0f), new Texture2D(graphicsDevice, Game1.ScreenWidth, 32), BARRICADE_HEALTH));
+        Entities.Add(new StaticEntity(new Vector2(0.0f, Game1.ScreenHeight - 150.0f), new Texture2D(graphicsDevice, Game1.ScreenWidth, 32), BARRICADE_HEALTH));
     }
     #endregion
 

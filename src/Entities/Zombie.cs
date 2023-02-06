@@ -22,6 +22,7 @@ public class Zombie : DynamicEntity
 
     #region Events
     public static event BarricadeCollision BarricadeCollisionEvent;
+    public static event BarricadeHitAudio BarricadeHitAudioEvent;
     public static event ZombieGrowlAudio ZombieGrowlAudioEvent;
     public static event ZombieDeathAudio ZombieDeathAudioEvent;
     #endregion
@@ -87,8 +88,11 @@ public class Zombie : DynamicEntity
         StaticEntity barricade = entities[1] as StaticEntity;
 
         // Collision: Zombie VS. Barricade 
-        if(OnPixelCollision(this, barricade))
+        if(OnPixelContains(this, barricade.Collider))
+        {
             BarricadeCollisionEvent?.Invoke(barricade, this);
+            BarricadeHitAudioEvent?.Invoke();
+        }
     }
     public override void Render(SpriteBatch spriteBatch)
     {
