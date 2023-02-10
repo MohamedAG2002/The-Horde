@@ -91,10 +91,10 @@ public class Zombie : DynamicEntity
         StaticEntity barricade = entities[1] as StaticEntity;
 
         // Collision: Zombie VS. Barricade 
-        if(CollisionManager.OnPixelContains(this, barricade.Collider) && IsAbleToAttack)
+        if(CollisionManager.OnPixelContains(this, barricade.Collider))
         {
             BarricadeCollisionEvent?.Invoke(barricade, this);
-            BarricadeHitAudioEvent?.Invoke();
+            //BarricadeHitAudioEvent?.Invoke();
         }
     }
     

@@ -7,7 +7,7 @@ public class SpawnManager
     #region Conts
     // Basic zombie consts
     private const int BASIC_HEALTH = 40;
-    private const int BASIC_DAMAGE = 15;
+    private const int BASIC_DAMAGE = 10;
     private const float BASIC_SPEED = 75.0f;
     
     // Brute zombie consts
@@ -17,7 +17,7 @@ public class SpawnManager
     
     // Denizen zombie consts
     private const int DENIZEN_HEALTH = 20;
-    private const int DENIZEN_DAMAGE = 8;
+    private const int DENIZEN_DAMAGE = 5;
     private const float DENIZEN_SPEED = 125.0f;
     #endregion
 

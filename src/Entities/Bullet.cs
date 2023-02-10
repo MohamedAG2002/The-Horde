@@ -8,12 +8,12 @@ public class Bullet : DynamicEntity
 {
     #region Consts
     // Pistol consts
-    private const int PISTOL_MAX_DIST = 150;
-    private const int PISTOL_DAMAGE = 20;
+    private const int PISTOL_MAX_DIST = 125;
+    private const int PISTOL_DAMAGE = 15;
 
     // Shotgun consts
-    private const int SHOTGUN_MAX_DIST = 50;
-    private const int SHOTGUN_DAMAGE = 50;
+    private const int SHOTGUN_MAX_DIST = 75;
+    private const int SHOTGUN_DAMAGE = 20;
     
     private const int MAX_LIFETIME = 100;
     #endregion
@@ -37,7 +37,7 @@ public class Bullet : DynamicEntity
     public Bullet(Vector2 position, Texture2D texture, BulletType type)
         :base(position, texture, 1)
     {
-        Velocity = new Vector2(0.0f, -300.0f);
+        Velocity = new Vector2(0.0f, -400.0f);
 
         Type = type;
 

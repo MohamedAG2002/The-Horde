@@ -11,7 +11,7 @@ public class Player : DynamicEntity
 {
     #region Consts
     private const int MAX_PISTOL_COOLDOWN = 30;
-    private const int MAX_SHOTGUN_COOLDOWN = 50;
+    private const int MAX_SHOTGUN_COOLDOWN = 80;
     #endregion
 
     #region Fields
@@ -30,7 +30,7 @@ public class Player : DynamicEntity
     public Player(Vector2 position, Texture2D texture, int maxHealth)
         :base(position, texture, maxHealth)
     {
-        Velocity = new Vector2(200.0f, 0.0f);
+        Velocity = new Vector2(210.0f, 0.0f);
         IsMoving = true;
         Anim = new Animation(Texture, 4, 15);
     
