@@ -9,8 +9,8 @@ using UI;
 namespace TheHorde;
 
 // TO-DO
+// Scenes(main menu, pause menu, settings, help, game over)
 // Upgrade the visuals(health bar, particles, hit points, which weapon currently equipped, better font)
-// Menus(main menu, pause menu, settings, help, game over)
 // UI(buttons, checkboxes, sliders, texts)
 
 // PROBLEMS:
