@@ -15,7 +15,7 @@ public class Zombie : DynamicEntity
     public readonly int MaxDamage;
     public int Damage {get; set;}
     public bool IsAbleToAttack {get; set;}
-    public string Type {get; private set;}
+    public ZombieType Type {get; private set;}
     public Animation Anim {get; private set;}
     private int m_AttackCoolDown;
     #endregion
@@ -40,17 +40,17 @@ public class Zombie : DynamicEntity
         // Determines which of the zombie types it is from the texture
         if(texture == AssetManager.Instance().GetSprite("BasicZombie"))
         {
-            Type = "Basic";
+            Type = ZombieType.Basic;
             Anim = new Animation(AssetManager.Instance().GetSprite("BasicZombie"), 4, 10);
         }
         else if(texture == AssetManager.Instance().GetSprite("BruteZombie"))
         {
-            Type = "Brute";
+            Type = ZombieType.Brute;
             Anim = new Animation(AssetManager.Instance().GetSprite("BruteZombie"), 4, 15);
         }
         else 
         {
-            Type = "Denizen";
+            Type = ZombieType.Denizen;
             Anim = new Animation(AssetManager.Instance().GetSprite("DenizenZombie"), 4, 5);
         }
 
@@ -61,20 +61,23 @@ public class Zombie : DynamicEntity
     #region Methods
     public override void Update(GameTime gameTime)
     {
+        // Decrease the attack cooldown gradually
         m_AttackCoolDown--;
 
+        // Allowing the zombie to attack once the cooldown has reached 0
         if(m_AttackCoolDown == 0)
         {
             m_AttackCoolDown = MAX_ATTACK_COOLDOWN;
             IsAbleToAttack = true;
         }   
+        // Otherwise, make the zombie defenceless
         else Damage = 0;
 
-        if(IsMoving) 
-        {
+        if(IsAbleToAttack)
             Attack();
+
+        if(IsMoving) 
             Anim.Update();
-        }
 
         base.Update(gameTime);
     
@@ -88,12 +91,13 @@ public class Zombie : DynamicEntity
         StaticEntity barricade = entities[1] as StaticEntity;
 
         // Collision: Zombie VS. Barricade 
-        if(OnPixelContains(this, barricade.Collider))
+        if(CollisionManager.OnPixelContains(this, barricade.Collider) && IsAbleToAttack)
         {
             BarricadeCollisionEvent?.Invoke(barricade, this);
             BarricadeHitAudioEvent?.Invoke();
         }
     }
+    
     public override void Render(SpriteBatch spriteBatch)
     {
         if(IsActive)
@@ -108,25 +112,11 @@ public class Zombie : DynamicEntity
 
     public void Attack()
     {
-        if(IsAbleToAttack)
-        {
-            Damage = MaxDamage;
-            IsAbleToAttack = false;
-            
-            // Plays the appropriate zombie sound depending on the type
-            switch(Type)
-            {
-                case "Basic":
-                    ZombieGrowlAudioEvent?.Invoke(ZombieType.Basic);
-                    break;
-                case "Brute":
-                    ZombieGrowlAudioEvent?.Invoke(ZombieType.Brute);
-                    break;
-                case "Denizen":
-                    ZombieGrowlAudioEvent?.Invoke(ZombieType.Denizen);
-                    break;
-            }
-        }
+        Damage = MaxDamage;
+        IsAbleToAttack = false;
+        
+        // Plays the appropriate zombie sound depending on the type
+        ZombieGrowlAudioEvent?.Invoke(Type);
     }
     #endregion
 }

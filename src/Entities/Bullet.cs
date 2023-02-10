@@ -6,10 +6,25 @@ namespace TheHorde;
 
 public class Bullet : DynamicEntity
 {
+    #region Consts
+    // Pistol consts
+    private const int PISTOL_MAX_DIST = 150;
+    private const int PISTOL_DAMAGE = 20;
+
+    // Shotgun consts
+    private const int SHOTGUN_MAX_DIST = 50;
+    private const int SHOTGUN_DAMAGE = 50;
+    
+    private const int MAX_LIFETIME = 100;
+    #endregion
+
     #region Fields
+    // Public variables
     public int Damage {get; set;}
     public int MaxDist {get; set;}
-    private const int MAX_LIFETIME = 100;
+    public BulletType Type;
+
+    // Private variables
     private int m_LifeTime;
     private Vector2 m_OriginalPosition;
     #endregion
@@ -19,15 +34,24 @@ public class Bullet : DynamicEntity
     #endregion
 
     #region Constructor
-    public Bullet(Vector2 position, Texture2D texture, int health, int damage, int maxDist)
-        :base(position, texture, health)
+    public Bullet(Vector2 position, Texture2D texture, BulletType type)
+        :base(position, texture, 1)
     {
         Velocity = new Vector2(0.0f, -300.0f);
-        
-        Damage = damage;
 
-        // The max distanc at which the bullet will be effective
-        MaxDist = maxDist;
+        Type = type;
+
+        switch(Type)
+        {
+            case BulletType.Pistol:
+                Damage = PISTOL_DAMAGE;
+                MaxDist = PISTOL_MAX_DIST;
+                break;
+            case BulletType.Shootgun:
+                Damage = SHOTGUN_DAMAGE;
+                MaxDist = SHOTGUN_MAX_DIST;
+                break;
+        }
 
         m_OriginalPosition = position;
         m_LifeTime = MAX_LIFETIME;
@@ -48,7 +72,6 @@ public class Bullet : DynamicEntity
         if(m_LifeTime <= 0 || Position.Y < 0) Health = 0;
 
         base.Update(gameTime);
-    
     }
 
     public override void CollisionUpdate(List<IEntity> entities)
@@ -57,7 +80,7 @@ public class Bullet : DynamicEntity
         {
             if(entity is Zombie)
             {
-                if(OnPixelCollision(this, entity))
+                if(CollisionManager.OnPixelCollision(this, entity))
                     BulletCollisionEvent?.Invoke(this, entity as Zombie);
             }
         }

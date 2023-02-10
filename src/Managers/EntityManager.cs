@@ -14,44 +14,44 @@ public class EntityManager
 
     #region Fields
     public List<IEntity> Entities {get; private set;} = new List<IEntity>();
+    private GraphicsDevice m_gd;
     #endregion
 
     #region Constructor
     public EntityManager(GraphicsDevice graphicsDevice)
     {
+        m_gd = graphicsDevice;
+
         /* Adding entities */
         // Player
         Entities.Add(new Player(new Vector2(0.0f, Game1.ScreenHeight - 100.0f), AssetManager.Instance().GetSprite("Player"), 100));
 
         // Barricade(creates an invisible box that will act as the barricade)
-        Entities.Add(new StaticEntity(new Vector2(0.0f, Game1.ScreenHeight - 150.0f), new Texture2D(graphicsDevice, Game1.ScreenWidth, 32), BARRICADE_HEALTH));
+        Entities.Add(new StaticEntity(new Vector2(0.0f, Game1.ScreenHeight - 140.0f), new Texture2D(graphicsDevice, Game1.ScreenWidth, 32), BARRICADE_HEALTH));
     }
     #endregion
 
     #region Methods
     public void Update(GameTime gameTime)
     {
+        foreach(var entity in Entities)
+        {
+            // Update for the collisions
+            entity.CollisionUpdate(Entities);
+
+            // Normal entity update
+            entity.Update(gameTime);
+        }
+
+        // Deleting the entity from the list if it's inactive
         for(int i = 0; i < Entities.Count; i++)
         {
-            // Deleting the entity from the list if it's inactive
             // Decreasing the "i" so not to skip over any entities
             if(!Entities[i].IsActive) 
             {
                 Entities.RemoveAt(i);
                 i--;
             }
-            // Otherwise, update it as usual
-            else Entities[i].Update(gameTime);
-        }
-        
-        CollisionUpdate();
-    }
-
-    public void CollisionUpdate()
-    {
-        foreach(var entity in Entities)
-        {
-            entity.CollisionUpdate(Entities);
         }
     }
 

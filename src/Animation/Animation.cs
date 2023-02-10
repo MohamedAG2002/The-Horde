@@ -7,8 +7,9 @@ public class Animation
 {
     #region Fields
     public Texture2D SpriteSheet {get; private set;}
-    public int Frames {get; set;}
+    public static int Frames {get; set;}
     public int FrameSpeed {get; set;}
+    public Rectangle DestRec;
     public static int SpriteWidth;
     public static int SpriteHeight;
 
@@ -45,14 +46,13 @@ public class Animation
 
         SpriteWidth = SpriteSheet.Width / Frames;
         SpriteHeight = SpriteSheet.Height;
+
+        DestRec = new Rectangle((SpriteSheet.Width / Frames) * m_CurrentFrame, 0, SpriteSheet.Width / Frames, SpriteSheet.Height);
     }
 
     public void Render(SpriteBatch spriteBatch, Vector2 position)
     {
-        spriteBatch.Draw(SpriteSheet, 
-                         position, 
-                         new Rectangle((SpriteSheet.Width / Frames) * m_CurrentFrame, 0, SpriteSheet.Width / Frames, SpriteSheet.Height), 
-                         Color.White);
+        spriteBatch.Draw(SpriteSheet, position, DestRec, Color.White);
     }
 
     // Plays an animation at a fixed speed

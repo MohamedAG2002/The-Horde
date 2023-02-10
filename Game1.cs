@@ -6,14 +6,18 @@ using System;
 
 namespace TheHorde;
 
-// TO-DO Tomorrow
-// Add the barricade
+// TO-DO
 // Perhaps add more than one type of gun
 // Add a scoring system
 // Add a visul health bar
+// Menus(main menu, pause menu, settings, help, game over)
+// UI(buttons, checkboxes, sliders)
 
 // PROBLEMS:
-// Barricade needs a bit of refining as well
+// The collision between the zombie and the barricade is broken
+// The collisions are not so pixel perfect as you had thought
+// Rebalance the zombies' damages and healths
+// Fuck collisions
 
 public class Game1 : Game
 {
