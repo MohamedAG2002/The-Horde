@@ -7,7 +7,6 @@ using System;
 namespace TheHorde;
 
 // TO-DO
-// Add a scoring system
 // Upgrade the visuals(health bar, particles, hit points, which weapon currently equipped, better font)
 // Menus(main menu, pause menu, settings, help, game over)
 // UI(buttons, checkboxes, sliders)
@@ -25,14 +24,16 @@ public class Game1 : Game
     public static int ScreenWidth;
     public static int ScreenHeight;
     public static Random Random;
+    public SpriteFont mainFont;
     #endregion
 
     #region Managers
-    public TileManager TileManager;
-    public EntityManager EntityManager;
-    public SpawnManager SpawnManager;
-    public CollisionManager CollisionManager;
-    public AudioManager AudioManager;
+    public TileManager Tiles;
+    public EntityManager Entities;
+    public AudioManager Audio;
+    public SpawnManager Spawner;
+    public CollisionManager Collision;
+    public ScoreManager Score;
     #endregion
 
     public Game1()
@@ -62,23 +63,31 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+        #region Managers init
         // Assets init
         AssetManager.Instance().LoadAssets(Content);
 
         // Tiles init
-        TileManager = new TileManager();
+        Tiles = new TileManager();
 
         // Entities init
-        EntityManager = new EntityManager(GraphicsDevice);
+        Entities = new EntityManager(GraphicsDevice);
 
         // Audio init
-        AudioManager = new AudioManager();
+        Audio = new AudioManager();
 
         // Spawner init
-        SpawnManager = new SpawnManager(EntityManager, new Vector2(64.0f, 0.0f));
+        Spawner = new SpawnManager(Entities, new Vector2(64.0f, 0.0f));
 
         // Collisions init
-        CollisionManager = new CollisionManager();
+        Collision = new CollisionManager();
+
+        // Score init
+        Score = new ScoreManager();
+        #endregion
+
+        // Loading the font
+        mainFont = AssetManager.Instance().GetFont("MainFont");
     }
 
     protected override void Update(GameTime gameTime)
@@ -87,11 +96,16 @@ public class Game1 : Game
             Exit();
 
         
+        #region Managers update
         // Spawner init
-        SpawnManager.Update();
+        Spawner.Update();
 
         // Entities update
-        EntityManager.Update(gameTime);
+        Entities.Update(gameTime);
+
+        // Score update
+        Score.Update();
+        #endregion
 
         base.Update(gameTime);
     }
@@ -103,14 +117,22 @@ public class Game1 : Game
         // Rendering stuff here
         _spriteBatch.Begin();
 
+        #region Managers render
         // Tiles render
-        TileManager.Render(_spriteBatch);
+        Tiles.Render(_spriteBatch);
 
         // Entities render
-        EntityManager.Render(_spriteBatch);
+        Entities.Render(_spriteBatch);
+        #endregion
 
-        // UI render
-        _spriteBatch.DrawString(AssetManager.Instance().GetFont("MainFont"), "Barricade: " + EntityManager.Entities[1].Health, new Vector2(10, 10), Color.Black);
+        #region UI render
+        // Barricade's health 
+        _spriteBatch.DrawString(mainFont, "Barricade: " + Entities.Entities[1].Health, new Vector2(10.0f, 10.0f), Color.Black);
+        
+        // Score   
+        string scoreText = "Score: " + Score.Score;
+        _spriteBatch.DrawString(mainFont, scoreText, new Vector2(Game1.ScreenWidth - mainFont.MeasureString(scoreText).X - 10, 10.0f), Color.Black);
+        #endregion
 
         _spriteBatch.End();
 

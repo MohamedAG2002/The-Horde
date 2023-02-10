@@ -41,6 +41,7 @@ public class Bullet : DynamicEntity
 
         Type = type;
 
+        // Defining the bullet's parametars depending on its type
         switch(Type)
         {
             case BulletType.Pistol:

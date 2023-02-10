@@ -10,7 +10,7 @@ public abstract class IEntity
     #region Fields
     public abstract Vector2 Position {get; set;}
     public abstract Texture2D Texture {get; set;}
-    public abstract Rectangle Collider {get; set;}
+    public abstract Rectangle Collider {get;}
     public abstract int MaxHealth {get; set;}
     public abstract int Health {get; set;}
     public abstract bool IsActive {get; set;}
@@ -29,10 +29,9 @@ public class StaticEntity : IEntity
     #region Fields
     public override Vector2 Position { get; set; }
     public override Texture2D Texture { get; set; }
-    public override Rectangle Collider 
+    public override Rectangle Collider
     {
         get { return new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height); }
-        set { Collider = value; }
     }
     public override int MaxHealth {get; set;}
     public override int Health {get; set;}
@@ -49,6 +48,9 @@ public class StaticEntity : IEntity
     public delegate void BarricadeHitAudio();
     public delegate void ZombieGrowlAudio(ZombieType zombieType);
     public delegate void ZombieDeathAudio();
+
+    // Score delegates
+    public delegate void ScoreIncrease(ZombieType zombieType);
     #endregion
 
     #region Constructor
@@ -56,18 +58,24 @@ public class StaticEntity : IEntity
     public StaticEntity()
     {
         Position = new Vector2(0.0f, 0.0f);
+        
         Texture = null;
+        
         MaxHealth = 0;
         Health = MaxHealth;
+        
         IsActive = false;
     }
 
     public StaticEntity(Vector2 position, Texture2D texture, int maxHealth)
     {
         Position = position;
+        
         Texture = texture;
+        
         MaxHealth = maxHealth;
         Health = MaxHealth;
+        
         IsActive = true;
     }
     #endregion
@@ -124,7 +132,7 @@ public class DynamicEntity : StaticEntity
         if(IsMoving) Move(gameTime);
 
         // Clamping the position to the window's borders
-        Position = new Vector2(MathHelper.Clamp(Position.X, -20.0f, Game1.ScreenWidth - Animation.SpriteWidth + 20.0f), Position.Y);
+        Position = new Vector2(MathHelper.Clamp(Position.X, -20.0f, Game1.ScreenWidth - Animation.SpriteWidth + 15.0f), Position.Y);
 
         base.Update(gameTime);
     }

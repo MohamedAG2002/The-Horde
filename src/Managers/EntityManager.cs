@@ -60,6 +60,12 @@ public class EntityManager
         foreach(var entity in Entities)
         {
             entity.Render(spriteBatch);
+
+            Texture2D texture = new Texture2D(m_gd, 1, 1);
+            texture.SetData<Color>(new Color[] {Color.White});
+            Rectangle rec = new Rectangle((int)entity.Position.X, (int)entity.Position.Y, entity.Texture.Width, entity.Texture.Height);
+
+            //spriteBatch.Draw(texture, rec, Color.Purple);
         }
     }
     #endregion

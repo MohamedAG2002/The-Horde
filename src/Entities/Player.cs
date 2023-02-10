@@ -32,7 +32,7 @@ public class Player : DynamicEntity
     {
         Velocity = new Vector2(210.0f, 0.0f);
         IsMoving = true;
-        Anim = new Animation(Texture, 4, 15);
+        Anim = new Animation(Texture, 4, 12);
     
         m_IsAbleToShoot = true;
         m_ShotCoolDown = MAX_PISTOL_COOLDOWN;
@@ -75,8 +75,6 @@ public class Player : DynamicEntity
         if(!IsMoving) return;
 
         Shoot();
-
-        Anim.Update();
 
         // Switching between the weapon types
         if(Keyboard.GetState().IsKeyDown(Keys.Q))

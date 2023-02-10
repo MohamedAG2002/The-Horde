@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using System;
 using System.Collections.Generic;
 
 namespace TheHorde;
@@ -22,10 +21,16 @@ public class Zombie : DynamicEntity
     #endregion
 
     #region Events
+    // Collision events
     public static event BarricadeCollision BarricadeCollisionEvent;
+
+    // Audio events
     public static event BarricadeHitAudio BarricadeHitAudioEvent;
     public static event ZombieGrowlAudio ZombieGrowlAudioEvent;
     public static event ZombieDeathAudio ZombieDeathAudioEvent;
+
+    // Score events
+    public static event ScoreIncrease ScoreIncreaseEvent;
     #endregion
 
     #region Constructor
@@ -68,9 +73,6 @@ public class Zombie : DynamicEntity
         if(IsAbleToAttack)
             Attack();
 
-        if(IsMoving) 
-            Anim.Update();
-
         base.Update(gameTime);
 
         // Allowing the zombie to attack once the cooldown has reached 0
@@ -84,7 +86,10 @@ public class Zombie : DynamicEntity
     
         // Plays the approriate sound when the zombie dies
         if(Health == 0) 
+        {
             ZombieDeathAudioEvent?.Invoke();
+            ScoreIncreaseEvent?.Invoke(Type);
+        }
     }
 
     public override void CollisionUpdate(List<IEntity> entities)
@@ -94,12 +99,11 @@ public class Zombie : DynamicEntity
         // Collision: Zombie VS. Barricade 
         if(CollisionManager.OnPixelContains(this, barricade.Collider))
         {
-            BarricadeCollisionEvent?.Invoke(barricade, this);
-
-            if(!IsAbleToAttack) return;
-
-            Console.WriteLine("HIT!!!");
-            BarricadeHitAudioEvent?.Invoke();
+            if(IsAbleToAttack)
+            {
+                BarricadeCollisionEvent?.Invoke(barricade, this);
+                BarricadeHitAudioEvent?.Invoke();
+            }
         }
     }
     

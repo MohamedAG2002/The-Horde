@@ -37,29 +37,24 @@ public class Animation
     #endregion
 
     #region Method
-    public void Update()
-    {
-        // Switching the direction of the frames once it's on either side of the spritesheet
-        if(m_CurrentFrame == Frames - 1) m_AnimDirection = -1;
-        else if(m_CurrentFrame == 0) m_AnimDirection = 1;
-
-        SpriteWidth = SpriteSheet.Width / Frames;
-        SpriteHeight = SpriteSheet.Height;
-    }
-
     public void Render(SpriteBatch spriteBatch, Vector2 position)
     {
         spriteBatch.Draw(SpriteSheet, 
-                         position, 
-                         new Rectangle((SpriteSheet.Width / Frames) * m_CurrentFrame, 0, SpriteSheet.Width / Frames, SpriteSheet.Height), 
+                         new Rectangle((int)position.X, (int)position.Y, SpriteSheet.Width / 4, SpriteSheet.Height),
+                         new Rectangle((SpriteSheet.Width / Frames) * m_CurrentFrame, 0, SpriteSheet.Width / 4, SpriteSheet.Height), 
                          Color.White);
     }
 
     // Plays an animation at a fixed speed
     public void Play()
     {
+        // Switching the direction of the frames once it's on either side of the spritesheet
+        if(m_CurrentFrame == Frames - 1) m_AnimDirection = -1;
+        else if(m_CurrentFrame == 0) m_AnimDirection = 1;
+
         if(!m_IsAnimating) return;
 
+        // Increasing the timer for the animations to progress
         m_Timer++;
 
         if(m_Timer >= FrameSpeed)
