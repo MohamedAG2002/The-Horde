@@ -65,7 +65,7 @@ public class EntityManager
             texture.SetData<Color>(new Color[] {Color.White});
             Rectangle rec = new Rectangle((int)entity.Position.X, (int)entity.Position.Y, entity.Texture.Width, entity.Texture.Height);
 
-            //spriteBatch.Draw(texture, rec, Color.Purple);
+            spriteBatch.Draw(texture, rec, Color.Purple);
         }
     }
     #endregion

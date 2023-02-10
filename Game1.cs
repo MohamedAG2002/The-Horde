@@ -4,16 +4,17 @@ using Microsoft.Xna.Framework.Input;
 
 using System;
 
+using UI;
+
 namespace TheHorde;
 
 // TO-DO
 // Upgrade the visuals(health bar, particles, hit points, which weapon currently equipped, better font)
 // Menus(main menu, pause menu, settings, help, game over)
-// UI(buttons, checkboxes, sliders)
+// UI(buttons, checkboxes, sliders, texts)
 
 // PROBLEMS:
-// The collisions are not so pixel perfect as you had thought
-// Fuck collisions
+// The collisions are not so pixel perfect as you had thought. FUCK COLLISIONS!
 
 public class Game1 : Game
 {
@@ -26,6 +27,8 @@ public class Game1 : Game
     public static Random Random;
     public SpriteFont mainFont;
     #endregion
+
+    Text BarricadeHealth, ScoreText;
 
     #region Managers
     public TileManager Tiles;
@@ -88,6 +91,9 @@ public class Game1 : Game
 
         // Loading the font
         mainFont = AssetManager.Instance().GetFont("MainFont");
+
+        BarricadeHealth = new Text(mainFont, "Barricade: ", new Vector2(10.0f, 10.0f), Color.Black);
+        ScoreText = new Text(mainFont, "Score: ", new Vector2(Game1.ScreenWidth - 75.0f, 10.0f), Color.Black);
     }
 
     protected override void Update(GameTime gameTime)
@@ -127,11 +133,13 @@ public class Game1 : Game
 
         #region UI render
         // Barricade's health 
-        _spriteBatch.DrawString(mainFont, "Barricade: " + Entities.Entities[1].Health, new Vector2(10.0f, 10.0f), Color.Black);
-        
+        BarricadeHealth.String = "Barricade: " + Entities.Entities[1].Health;
+        BarricadeHealth.Render(_spriteBatch);
+
         // Score   
         string scoreText = "Score: " + Score.Score;
-        _spriteBatch.DrawString(mainFont, scoreText, new Vector2(Game1.ScreenWidth - mainFont.MeasureString(scoreText).X - 10, 10.0f), Color.Black);
+        ScoreText.String = scoreText;
+        ScoreText.Render(_spriteBatch);
         #endregion
 
         _spriteBatch.End();
