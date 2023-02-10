@@ -13,7 +13,6 @@ namespace TheHorde;
 // UI(buttons, checkboxes, sliders)
 
 // PROBLEMS:
-// The collision between the zombie and the barricade is broken
 // The collisions are not so pixel perfect as you had thought
 // Fuck collisions
 

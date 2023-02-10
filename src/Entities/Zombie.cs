@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+using System;
 using System.Collections.Generic;
 
 namespace TheHorde;
@@ -64,6 +65,14 @@ public class Zombie : DynamicEntity
         // Decrease the attack cooldown gradually
         m_AttackCoolDown--;
 
+        if(IsAbleToAttack)
+            Attack();
+
+        if(IsMoving) 
+            Anim.Update();
+
+        base.Update(gameTime);
+
         // Allowing the zombie to attack once the cooldown has reached 0
         if(m_AttackCoolDown == 0)
         {
@@ -72,14 +81,6 @@ public class Zombie : DynamicEntity
         }   
         // Otherwise, make the zombie defenceless
         else Damage = 0;
-
-        if(IsAbleToAttack)
-            Attack();
-
-        if(IsMoving) 
-            Anim.Update();
-
-        base.Update(gameTime);
     
         // Plays the approriate sound when the zombie dies
         if(Health == 0) 
@@ -94,7 +95,11 @@ public class Zombie : DynamicEntity
         if(CollisionManager.OnPixelContains(this, barricade.Collider))
         {
             BarricadeCollisionEvent?.Invoke(barricade, this);
-            //BarricadeHitAudioEvent?.Invoke();
+
+            if(!IsAbleToAttack) return;
+
+            Console.WriteLine("HIT!!!");
+            BarricadeHitAudioEvent?.Invoke();
         }
     }
     

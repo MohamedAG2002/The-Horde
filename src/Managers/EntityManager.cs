@@ -34,15 +34,6 @@ public class EntityManager
     #region Methods
     public void Update(GameTime gameTime)
     {
-        foreach(var entity in Entities)
-        {
-            // Update for the collisions
-            entity.CollisionUpdate(Entities);
-
-            // Normal entity update
-            entity.Update(gameTime);
-        }
-
         // Deleting the entity from the list if it's inactive
         for(int i = 0; i < Entities.Count; i++)
         {
@@ -52,6 +43,15 @@ public class EntityManager
                 Entities.RemoveAt(i);
                 i--;
             }
+        }
+
+        foreach(var entity in Entities)
+        {
+            // Update for the collisions
+            entity.CollisionUpdate(Entities);
+
+            // Normal entity update
+            entity.Update(gameTime);
         }
     }
 

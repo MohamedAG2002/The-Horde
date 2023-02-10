@@ -64,6 +64,7 @@ public class Animation
 
         if(m_Timer >= FrameSpeed)
         {
+            // Either increases or decreaces the current frame, depending on the direction(either goes back or forwards, basically)
             m_CurrentFrame += m_AnimDirection;
 
             m_Timer = 0;
