@@ -9,7 +9,7 @@ public class Bullet : DynamicEntity
     #region Consts
     // Pistol consts
     private const int PISTOL_MAX_DIST = 125;
-    private const int PISTOL_DAMAGE = 15;
+    private const int PISTOL_DAMAGE = 20;
 
     // Shotgun consts
     private const int SHOTGUN_MAX_DIST = 75;
