@@ -11,7 +11,6 @@ public class CollisionManager
     public CollisionManager()
     {
         // Subscribing to events
-        Zombie.BarricadeCollisionEvent += OnBarricadeCollision;
         Bullet.BulletCollisionEvent += OnBulletCollision;
     }
     #endregion
@@ -57,49 +56,9 @@ public class CollisionManager
         // No collisions occured
         return false;
     }
-
-    // Calculates pixel-perfect collisions given an entity and a rectangle
-    public static bool OnPixelContains(IEntity entity, Rectangle bounds)
-    {
-        // Getting the raw color data from the texture
-        Color[] entityRawData = new Color[entity.Texture.Width * entity.Texture.Height];
-        entity.Texture.GetData<Color>(entityRawData);
-
-        // Calculating the intersecting rectangle
-        int intersectingRec1X = MathHelper.Max(entity.Collider.X, bounds.X);
-        int intersectingRec2X = MathHelper.Min(entity.Collider.X + entity.Collider.Width, bounds.X + bounds.Width);
-
-        int intersectingRec1Y = MathHelper.Max(entity.Collider.Y, bounds.Y);
-        int intersectingRec2Y = MathHelper.Min(entity.Collider.Y + entity.Collider.Height, bounds.Y + bounds.Height);
-
-        // Looping through the pixels
-        for(int i = intersectingRec1Y; i < intersectingRec2Y; i++)
-        {
-            for(int j = intersectingRec1X; j < intersectingRec2X; j++)
-            {
-                // Getting the color of the current pixel
-                Color entityPixelColor = entityRawData[(j - entity.Collider.X) + (i - entity.Collider.Y) * entity.Texture.Width];
-
-                // If the current pixel's alpha channel is not 0, then a collision has occured
-                if(entityPixelColor.A != 0)
-                    return true;
-            }
-        }
-
-        // No collisions occured
-        return false;
-    }
     #endregion
 
     #region Event-related methods
-    public void OnBarricadeCollision(int barricadeHealth, Zombie zombie)
-    {
-        zombie.Velocity = new Vector2(0.0f, 0.0f);
-        zombie.Anim.Stop();
-        
-        barricadeHealth -= zombie.Damage;
-    }
-
     public void OnBulletCollision(Bullet bullet, IEntity entity)
     {
         entity.TakeDamage(bullet.Damage);

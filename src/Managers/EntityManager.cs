@@ -14,7 +14,7 @@ public class EntityManager
 
     #region Fields
     public List<IEntity> Entities {get; private set;} = new List<IEntity>();
-    public static int BarricadeHealth;
+    public int BarricadeHealth;
     #endregion
 
     #region Constructor
@@ -25,6 +25,9 @@ public class EntityManager
         Entities.Add(new Player(new Vector2(0.0f, Game1.ScreenHeight - 100.0f), AssetManager.Instance().GetSprite("Player"), 100));
     
         BarricadeHealth = BARRICADE_HEALTH;
+
+        // Subscribing to events(doing a collision event here since the health for the barricade is here. Very bad design)
+        Zombie.BarricadeCollisionEvent += OnBarricadeCollision;
     }
     #endregion
 
@@ -59,6 +62,14 @@ public class EntityManager
         {
             entity.Render(spriteBatch);
         }
+    }
+
+    public void OnBarricadeCollision(Zombie zombie)
+    {
+        zombie.Velocity = new Vector2(0.0f, 0.0f);
+        zombie.Anim.Stop();
+
+        BarricadeHealth -= zombie.Damage;
     }
     #endregion
 }

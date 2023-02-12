@@ -17,7 +17,9 @@ public class Zombie : DynamicEntity
     public bool IsAbleToAttack {get; set;}
     public ZombieType Type {get; private set;}
     public Animation Anim {get; private set;}
+
     private int m_AttackCoolDown;
+    private List<Vector2> m_BarricadePoints = new List<Vector2>();
     #endregion
 
     #region Events
@@ -61,6 +63,12 @@ public class Zombie : DynamicEntity
         }
 
         m_AttackCoolDown = MAX_ATTACK_COOLDOWN;
+
+        // Adding the barricade points for collision
+        for(int i = 0; i < 26; i++)
+        {
+            m_BarricadePoints.Add(new Vector2(i * Animation.SpriteWidth / 2.0f, Game1.ScreenHeight - 160.0f));
+        }
     }
     #endregion
 
@@ -94,15 +102,17 @@ public class Zombie : DynamicEntity
 
     public override void CollisionUpdate(List<IEntity> entities)
     {
-        // Collision: Zombie VS. Barricade 
-        if(Vector2.Distance(Position, new Vector2(0.0f, Game1.ScreenHeight - 128.0f)) <= 0)
+        // Collision: Zombie VS. Barricade(or rather just checking the distance between the points and the zombie)
+        foreach(var point in m_BarricadePoints)
         {
-            if(IsAbleToAttack)
+            if(Vector2.Distance(Position, point) <= 4)
             {
-                BarricadeCollisionEvent?.Invoke(EntityManager.BarricadeHealth, this);
-                BarricadeHitAudioEvent?.Invoke();
+                BarricadeCollisionEvent?.Invoke(this);
+            
+                if(IsAbleToAttack)
+                    BarricadeHitAudioEvent?.Invoke();
             }
-        }
+        } 
     }
     
     public override void Render(SpriteBatch spriteBatch)

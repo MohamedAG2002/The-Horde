@@ -37,7 +37,7 @@ public class GameScene : IScene
 
         #region HUD render
         // Barricade health
-        spriteBatch.DrawString(AssetManager.Instance().GetFont("MainFont"), "Barricade: " + EntityManager.BarricadeHealth, new Vector2(10.0f, 10.0f), Color.Black);
+        spriteBatch.DrawString(AssetManager.Instance().GetFont("MainFont"), "Barricade: " + Entities.BarricadeHealth, new Vector2(10.0f, 10.0f), Color.Black);
 
         // Score
         spriteBatch.DrawString(AssetManager.Instance().GetFont("MainFont"), "Score: " + Score.Score, new Vector2(Game1.ScreenWidth - 75.0f, 10.0f), Color.Black);

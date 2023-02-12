@@ -31,6 +31,8 @@ public class Game1 : Game
     public SceneManager Scenes;
     #endregion
 
+    private bool m_IsFullScreen;
+
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -50,6 +52,8 @@ public class Game1 : Game
         _graphics.PreferredBackBufferHeight = ScreenHeight;
 
         _graphics.ApplyChanges();
+
+        m_IsFullScreen = false;
 
         base.Initialize();
     }
@@ -82,6 +86,12 @@ public class Game1 : Game
         // Scenes update
         Scenes.Update(gameTime);
         #endregion
+
+        if(Keyboard.GetState().IsKeyDown(Keys.F))
+            m_IsFullScreen = !m_IsFullScreen;
+
+
+        _graphics.IsFullScreen = m_IsFullScreen;
 
         base.Update(gameTime);
     }

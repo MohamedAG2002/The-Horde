@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
 
+using System.Collections.Generic;
+
 namespace TheHorde;
 
 public class SpawnManager
@@ -23,6 +25,7 @@ public class SpawnManager
 
     #region Fields
     public Vector2 Position {get; set;}
+    private List<Vector2> m_SpawnPoints = new List<Vector2>();
     private EntityManager m_EntityManager;
     private int m_Timer;
     private int m_MaxTime;
@@ -34,6 +37,12 @@ public class SpawnManager
     public SpawnManager(EntityManager entityManager, Vector2 position)
     {
         Position = position;
+
+        // Adding spawn points
+        for(int i = 0; i < 6; i++)
+        {
+            m_SpawnPoints.Add(new Vector2(i * Animation.SpriteWidth, 0.0f));
+        }
 
         m_EntityManager = entityManager;
 
@@ -64,8 +73,8 @@ public class SpawnManager
             else if(m_SpawnCounter % 5 == 0) SpawnEntity(ZombieType.Denizen);
             else SpawnEntity(ZombieType.Basic);
             
-            // Reseting the position randomly
-            Position = new Vector2((float)Game1.Random.Next(64, Game1.ScreenWidth - 64), 0.0f);
+            // Reseting the position of the spawner to a new random position
+            Position = m_SpawnPoints[Game1.Random.Next(0, m_SpawnPoints.Count - 1)];
 
             // Reseting the timer
             m_Timer = 0;
