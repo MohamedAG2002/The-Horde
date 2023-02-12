@@ -41,7 +41,7 @@ public class StaticEntity : IEntity
     #region Delegates
     // Collision delegates
     public delegate void BulletCollision(Bullet bullet, Zombie zombie);
-    public delegate void BarricadeCollision(StaticEntity barricade, Zombie zombie);
+    public delegate void BarricadeCollision(int barricadeHealth, Zombie zombie);
     
     // Audio delegates 
     public delegate void BulletShotAudio(BulletType bulletType);

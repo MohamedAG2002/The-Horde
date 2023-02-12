@@ -14,20 +14,17 @@ public class EntityManager
 
     #region Fields
     public List<IEntity> Entities {get; private set;} = new List<IEntity>();
-    private GraphicsDevice m_gd;
+    public static int BarricadeHealth;
     #endregion
 
     #region Constructor
-    public EntityManager(GraphicsDevice graphicsDevice)
+    public EntityManager()
     {
-        m_gd = graphicsDevice;
-
         /* Adding entities */
         // Player
         Entities.Add(new Player(new Vector2(0.0f, Game1.ScreenHeight - 100.0f), AssetManager.Instance().GetSprite("Player"), 100));
-
-        // Barricade(creates an invisible box that will act as the barricade)
-        Entities.Add(new StaticEntity(new Vector2(0.0f, Game1.ScreenHeight - 140.0f), new Texture2D(graphicsDevice, Game1.ScreenWidth, 32), BARRICADE_HEALTH));
+    
+        BarricadeHealth = BARRICADE_HEALTH;
     }
     #endregion
 
@@ -45,6 +42,7 @@ public class EntityManager
             }
         }
 
+        // Updating the entities
         foreach(var entity in Entities)
         {
             // Update for the collisions
@@ -60,12 +58,6 @@ public class EntityManager
         foreach(var entity in Entities)
         {
             entity.Render(spriteBatch);
-
-            Texture2D texture = new Texture2D(m_gd, 1, 1);
-            texture.SetData<Color>(new Color[] {Color.White});
-            Rectangle rec = new Rectangle((int)entity.Position.X, (int)entity.Position.Y, entity.Texture.Width, entity.Texture.Height);
-
-            spriteBatch.Draw(texture, rec, Color.Purple);
         }
     }
     #endregion

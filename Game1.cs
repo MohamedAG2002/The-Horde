@@ -4,8 +4,6 @@ using Microsoft.Xna.Framework.Input;
 
 using System;
 
-using UI;
-
 namespace TheHorde;
 
 // TO-DO
@@ -25,18 +23,12 @@ public class Game1 : Game
     public static int ScreenWidth;
     public static int ScreenHeight;
     public static Random Random;
-    public SpriteFont mainFont;
     #endregion
-
-    Text BarricadeHealth, ScoreText;
 
     #region Managers
     public TileManager Tiles;
-    public EntityManager Entities;
     public AudioManager Audio;
-    public SpawnManager Spawner;
-    public CollisionManager Collision;
-    public ScoreManager Score;
+    public SceneManager Scenes;
     #endregion
 
     public Game1()
@@ -73,27 +65,12 @@ public class Game1 : Game
         // Tiles init
         Tiles = new TileManager();
 
-        // Entities init
-        Entities = new EntityManager(GraphicsDevice);
-
         // Audio init
         Audio = new AudioManager();
 
-        // Spawner init
-        Spawner = new SpawnManager(Entities, new Vector2(64.0f, 0.0f));
-
-        // Collisions init
-        Collision = new CollisionManager();
-
-        // Score init
-        Score = new ScoreManager();
+        // Scenes init
+        Scenes = new SceneManager();
         #endregion
-
-        // Loading the font
-        mainFont = AssetManager.Instance().GetFont("MainFont");
-
-        BarricadeHealth = new Text(mainFont, "Barricade: ", new Vector2(10.0f, 10.0f), Color.Black);
-        ScoreText = new Text(mainFont, "Score: ", new Vector2(Game1.ScreenWidth - 75.0f, 10.0f), Color.Black);
     }
 
     protected override void Update(GameTime gameTime)
@@ -101,16 +78,9 @@ public class Game1 : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-        
         #region Managers update
-        // Spawner init
-        Spawner.Update();
-
-        // Entities update
-        Entities.Update(gameTime);
-
-        // Score update
-        Score.Update();
+        // Scenes update
+        Scenes.Update(gameTime);
         #endregion
 
         base.Update(gameTime);
@@ -127,19 +97,8 @@ public class Game1 : Game
         // Tiles render
         Tiles.Render(_spriteBatch);
 
-        // Entities render
-        Entities.Render(_spriteBatch);
-        #endregion
-
-        #region UI render
-        // Barricade's health 
-        BarricadeHealth.String = "Barricade: " + Entities.Entities[1].Health;
-        BarricadeHealth.Render(_spriteBatch);
-
-        // Score   
-        string scoreText = "Score: " + Score.Score;
-        ScoreText.String = scoreText;
-        ScoreText.Render(_spriteBatch);
+        // Scenes render
+        Scenes.Render(_spriteBatch);
         #endregion
 
         _spriteBatch.End();

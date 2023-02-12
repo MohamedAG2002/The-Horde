@@ -8,9 +8,9 @@ namespace TheHorde;
 public class SceneManager
 {
     #region Fields
-    public List<IScene> Scenes {get;} = new List<IScene>();
     public SceneType Type {get; set;}
     public IScene CurrentScene;
+    private bool m_IsSceneChanged;
     #endregion
 
     #region Constructor
@@ -18,15 +18,9 @@ public class SceneManager
     {
         Type = SceneType.Game;
 
-        // Adding the scenes
-        Scenes.Add(new MainMenuScene());
-        Scenes.Add(new GameScene());
-        Scenes.Add(new SettingScene());
-        Scenes.Add(new HelpScene());
-        Scenes.Add(new OverScene());
+        CurrentScene = new GameScene();
 
-        // Setting the current scene
-        CurrentScene = Scenes[1] as GameScene;
+        m_IsSceneChanged = false;
     }
     #endregion
 
@@ -35,12 +29,44 @@ public class SceneManager
     {
         // Only updating the current scene
         CurrentScene.Update(gameTime);
+
+        // Only loading the scene when there is a change in the state
+        if(!m_IsSceneChanged) return;
+
+        switch(Type)
+        {
+            case SceneType.Menu:
+                CurrentScene = new MainMenuScene();
+                break;
+            case SceneType.Game:
+                CurrentScene = new GameScene();
+                break;
+            case SceneType.Setting:
+                CurrentScene = new SettingScene();
+                break;
+            case SceneType.Help:
+                CurrentScene = new HelpScene();
+                break;
+            case SceneType.Over:
+                CurrentScene = new OverScene();
+                break;
+        }
+
+        // Making sure that the scene loads once not every frame
+        m_IsSceneChanged = false;
     }
     
     public void Render(SpriteBatch spriteBatch)
     {
         // Only rendering the current scene
         CurrentScene.Render(spriteBatch);
+    }
+
+    public void OnSceneChange(SceneType sceneType)
+    {
+        Type = sceneType;
+
+        m_IsSceneChanged = true;
     }
     #endregion
 }

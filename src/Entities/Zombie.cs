@@ -94,14 +94,12 @@ public class Zombie : DynamicEntity
 
     public override void CollisionUpdate(List<IEntity> entities)
     {
-        StaticEntity barricade = entities[1] as StaticEntity;
-
         // Collision: Zombie VS. Barricade 
-        if(CollisionManager.OnPixelContains(this, barricade.Collider))
+        if(Vector2.Distance(Position, new Vector2(0.0f, Game1.ScreenHeight - 128.0f)) <= 0)
         {
             if(IsAbleToAttack)
             {
-                BarricadeCollisionEvent?.Invoke(barricade, this);
+                BarricadeCollisionEvent?.Invoke(EntityManager.BarricadeHealth, this);
                 BarricadeHitAudioEvent?.Invoke();
             }
         }

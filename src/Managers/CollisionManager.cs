@@ -92,12 +92,12 @@ public class CollisionManager
     #endregion
 
     #region Event-related methods
-    public void OnBarricadeCollision(StaticEntity barricade, Zombie zombie)
+    public void OnBarricadeCollision(int barricadeHealth, Zombie zombie)
     {
         zombie.Velocity = new Vector2(0.0f, 0.0f);
         zombie.Anim.Stop();
         
-        barricade.TakeDamage(zombie.Damage);
+        barricadeHealth -= zombie.Damage;
     }
 
     public void OnBulletCollision(Bullet bullet, IEntity entity)
