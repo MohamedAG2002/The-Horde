@@ -15,6 +15,7 @@ public sealed class AssetManager
     private Dictionary<string, SoundEffect> m_SoundDict = new Dictionary<string, SoundEffect>();
     private Dictionary<string, SpriteFont> m_FontDict = new Dictionary<string, SpriteFont>();
     private Dictionary<string, Texture2D> m_MapDict = new Dictionary<string, Texture2D>();
+    private Dictionary<string, Texture2D> m_GuiDict = new Dictionary<string, Texture2D>();
     #endregion
 
     #region Constructor
@@ -36,6 +37,7 @@ public sealed class AssetManager
         LoadMaps(content);
         LoadSounds(content);
         LoadFonts(content);
+        LoadGUI(content);
     }
 
     // Loads only the sprites
@@ -78,7 +80,9 @@ public sealed class AssetManager
     // Loads only the font
     public void LoadFonts(ContentManager content)
     {
-        m_FontDict.Add("MainFont", content.Load<SpriteFont>("Font/font"));
+        m_FontDict.Add("MainFont", content.Load<SpriteFont>("Font/font_large"));
+        m_FontDict.Add("SubFont", content.Load<SpriteFont>("Font/font_medium"));
+        m_FontDict.Add("ExtraFont", content.Load<SpriteFont>("Font/font_small"));
     }
 
     // Loads only the maps
@@ -86,6 +90,13 @@ public sealed class AssetManager
     {
         m_MapDict.Add("TileMap", content.Load<Texture2D>("Maps/tile_map"));
         m_MapDict.Add("PropMap", content.Load<Texture2D>("Maps/prop_map"));
+    }
+
+    // Loads only the gui-specific sprites
+    public void LoadGUI(ContentManager content)
+    {
+        m_GuiDict.Add("Shotgun-Icon", content.Load<Texture2D>("shotgun_icon"));
+        m_GuiDict.Add("Pistol-Icon", content.Load<Texture2D>("pistol_icon"));
     }
 
     // Returns a specific sprite
@@ -116,6 +127,12 @@ public sealed class AssetManager
     public Texture2D GetMap(string mapName)
     {
         return m_MapDict[mapName];
+    }
+
+    // Returns a specific gui texture
+    public Texture2D GetGUI(string guiName)
+    {
+        return m_GuiDict[guiName];
     }
     #endregion
 }

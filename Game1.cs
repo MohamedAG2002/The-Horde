@@ -10,9 +10,11 @@ namespace TheHorde;
 // Scenes(main menu, pause menu, settings, help, game over)
 // Upgrade the visuals(health bar, particles, hit points, which weapon currently equipped, better font)
 // UI(buttons, checkboxes, sliders, texts)
+// Turret?????????
 
 // PROBLEMS:
 // The collisions are not so pixel perfect as you had thought. FUCK COLLISIONS!
+// The barricade's health does not decrease when the zombie colides with it. The audio and the collision works, just not the health
 
 public class Game1 : Game
 {

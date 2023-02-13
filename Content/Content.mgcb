@@ -19,12 +19,6 @@
 /processorParam:Quality=Best
 /build:Audio/barricade_hit.wav
 
-#begin Audio/barricade_hit.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/barricade_hit.wav
-
 #begin Audio/basic_zombie.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -61,12 +55,50 @@
 /processorParam:Quality=Best
 /build:Audio/zombie_death.wav
 
-#begin Font/font.spritefont
+#begin Font/font_large.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
-/build:Font/font.spritefont
+/build:Font/font_large.spritefont
+
+#begin Font/font_medium.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Font/font_medium.spritefont
+
+#begin Font/font_small.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Font/font_small.spritefont
+
+#begin Gui/colt_45.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Gui/colt_45.png
+
+#begin Gui/pump_action_rifle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Gui/pump_action_rifle.png
 
 #begin Maps/prop_map.png
 /importer:TextureImporter
