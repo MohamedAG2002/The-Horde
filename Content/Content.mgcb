@@ -10,6 +10,8 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:..\..\..\..\..\Users\family\.nuget\packages\geonbit.ui\4.1.0.1\lib\netcoreapp3.1-windows\GeonBit.UI.DataTypes.dll
+/reference:..\..\..\..\..\Users\family\.nuget\packages\geonbit.ui\4.1.0.1\lib\netcoreapp3.1\GeonBit.UI.DataTypes.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -4748,7 +4750,14 @@
 
 #begin ../../../../../Users/family/.nuget/packages/geonbit.ui/4.1.0.1/content/Content/GeonBit.UI/themes/lowres/textures/slider_fancy_md.xml
 /importer:XmlImporter
-/processor:PassThroughProcessor
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
 /build:../../../../../Users/family/.nuget/packages/geonbit.ui/4.1.0.1/content/Content/GeonBit.UI/themes/lowres/textures/slider_fancy_md.xml;themes/lowres/textures/slider_fancy_md.xml
 
 #begin ../../../../../Users/family/.nuget/packages/geonbit.ui/4.1.0.1/content/Content/GeonBit.UI/themes/lowres/textures/slider_fancy.png
@@ -4822,6 +4831,13 @@
 /processorParam:Quality=Best
 /build:Audio/zombie_death.wav
 
+#begin Font/Bold.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Font/Bold.spritefont
+
 #begin Font/font_large.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -4842,6 +4858,20 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:Font/font_small.spritefont
+
+#begin Font/Italic.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Font/Italic.spritefont
+
+#begin Font/Regular.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Font/Regular.spritefont
 
 #begin Gui/colt_45.png
 /importer:TextureImporter
