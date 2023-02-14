@@ -2,15 +2,16 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+using GeonBit.UI;
+
 using System;
 
 namespace TheHorde;
 
 // TO-DO
 // Scenes(main menu, pause menu, settings, help, game over)
-// Upgrade the visuals(health bar, particles, hit points, which weapon currently equipped, better font)
+// Upgrade the visuals(health bar, particles, hit points, which weapon currently equipped)
 // UI(buttons, checkboxes, sliders, texts)
-// Turret?????????
 
 // PROBLEMS:
 // The collisions are not so pixel perfect as you had thought. FUCK COLLISIONS!
@@ -33,8 +34,6 @@ public class Game1 : Game
     public SceneManager Scenes;
     #endregion
 
-    private bool m_IsFullScreen;
-
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -44,6 +43,9 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
+        // UI init
+        UserInterface.Initialize(Content, BuiltinThemes.hd);
+
         // Utility variables init
         ScreenWidth = 384;
         ScreenHeight = 512;
@@ -54,8 +56,6 @@ public class Game1 : Game
         _graphics.PreferredBackBufferHeight = ScreenHeight;
 
         _graphics.ApplyChanges();
-
-        m_IsFullScreen = false;
 
         base.Initialize();
     }
@@ -84,16 +84,11 @@ public class Game1 : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-        #region Managers update
+        // UI update
+        UserInterface.Active.Update(gameTime);
+
         // Scenes update
         Scenes.Update(gameTime);
-        #endregion
-
-        if(Keyboard.GetState().IsKeyDown(Keys.F))
-            m_IsFullScreen = !m_IsFullScreen;
-
-
-        _graphics.IsFullScreen = m_IsFullScreen;
 
         base.Update(gameTime);
     }
@@ -112,6 +107,9 @@ public class Game1 : Game
         // Scenes render
         Scenes.Render(_spriteBatch);
         #endregion
+
+        // UI render
+        UserInterface.Active.Draw(_spriteBatch);
 
         _spriteBatch.End();
 

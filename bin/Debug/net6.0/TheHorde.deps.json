@@ -8,11 +8,24 @@
     ".NETCoreApp,Version=v6.0": {
       "TheHorde/1.0.0": {
         "dependencies": {
+          "GeonBit.UI": "4.1.0.1",
           "MonoGame.Content.Builder.Task": "3.8.1.303",
           "MonoGame.Framework.DesktopGL": "3.8.1.303"
         },
         "runtime": {
           "TheHorde.dll": {}
+        }
+      },
+      "GeonBit.UI/4.1.0.1": {
+        "runtime": {
+          "lib/netcoreapp3.1/GeonBit.UI.DataTypes.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          },
+          "lib/netcoreapp3.1/GeonBit.UI.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
         }
       },
       "MonoGame.Content.Builder.Task/3.8.1.303": {},
@@ -73,6 +86,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "GeonBit.UI/4.1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-l/ohGu1enyn2Y1K516xgDs6fEOnte+sZ1w/pmKNLIZPNyMSzRZjHfJTUilRetHmD5CLFwNXW78p7jjC/TfxU3Q==",
+      "path": "geonbit.ui/4.1.0.1",
+      "hashPath": "geonbit.ui.4.1.0.1.nupkg.sha512"
     },
     "MonoGame.Content.Builder.Task/3.8.1.303": {
       "type": "package",

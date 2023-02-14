@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "cc9Y4DUN5bcLyj0jC5pqMiKKvuRAZ2Ph0RnnKXRqmLn28Wr7q6j5it1Tg3MBV1CREvik5C+UDt0whO21TJUPfA==",
+  "dgSpecHash": "x6ZyM7isnr50efdUN5e5ixES827zrUmq5+Gr3EQkwU92QwqLJW67eW2EROzVCnx3cTQL6WiGmG0QD3GzoPgRLA==",
   "success": true,
   "projectFilePath": "C:\\Dev\\C# Projects\\MonoGameProjects\\TheHorde\\TheHorde.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\family\\.nuget\\packages\\geonbit.ui\\4.1.0.1\\geonbit.ui.4.1.0.1.nupkg.sha512",
     "C:\\Users\\family\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
     "C:\\Users\\family\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
   ],

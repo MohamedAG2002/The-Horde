@@ -48,3 +48,10 @@ C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Sprites\pi
 C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Sprites\shootgun_shell.xnb
 C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Audio\barricade_hit.xnb
 C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Audio\zombie_death.xnb
+C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Font\font_large.xnb
+C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Font\font_medium.xnb
+C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Font\font_small.xnb
+C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Gui\colt_45.xnb
+C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\Content\Gui\pump_action_rifle.xnb
+C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\GeonBit.UI.DataTypes.dll
+C:\Dev\C# Projects\MonoGameProjects\TheHorde\bin\Debug\net6.0\GeonBit.UI.dll

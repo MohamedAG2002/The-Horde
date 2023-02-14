@@ -80,9 +80,9 @@ public sealed class AssetManager
     // Loads only the font
     public void LoadFonts(ContentManager content)
     {
-        m_FontDict.Add("MainFont", content.Load<SpriteFont>("Font/font_large"));
-        m_FontDict.Add("SubFont", content.Load<SpriteFont>("Font/font_medium"));
-        m_FontDict.Add("ExtraFont", content.Load<SpriteFont>("Font/font_small"));
+        m_FontDict.Add("Large", content.Load<SpriteFont>("Font/font_large"));
+        m_FontDict.Add("Medium", content.Load<SpriteFont>("Font/font_medium"));
+        m_FontDict.Add("Small", content.Load<SpriteFont>("Font/font_small"));
     }
 
     // Loads only the maps
@@ -95,8 +95,8 @@ public sealed class AssetManager
     // Loads only the gui-specific sprites
     public void LoadGUI(ContentManager content)
     {
-        m_GuiDict.Add("Shotgun-Icon", content.Load<Texture2D>("shotgun_icon"));
-        m_GuiDict.Add("Pistol-Icon", content.Load<Texture2D>("pistol_icon"));
+        m_GuiDict.Add("Shotgun-Icon", content.Load<Texture2D>("Gui/pump_action_rifle"));
+        m_GuiDict.Add("Pistol-Icon", content.Load<Texture2D>("Gui/colt_45"));
     }
 
     // Returns a specific sprite

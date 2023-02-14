@@ -1,8 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using System.Collections.Generic;
-
 namespace TheHorde;
 
 public class SceneManager
@@ -18,9 +16,12 @@ public class SceneManager
     {
         Type = SceneType.Game;
 
-        CurrentScene = new GameScene();
+        CurrentScene = new MainMenuScene();
 
         m_IsSceneChanged = false;
+
+        // Subscribing to events
+        MainMenuScene.SceneChangeEvent += OnSceneChange;
     }
     #endregion
 
