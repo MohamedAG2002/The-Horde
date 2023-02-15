@@ -1,0 +1,30 @@
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace TheHorde;
+
+public class CreditsScene : IScene
+{
+    #region Fields
+    
+    #endregion
+
+    #region Constructor
+    public CreditsScene()
+    {
+
+    }
+    #endregion
+
+    #region Methods
+    public void Update(GameTime gameTime)
+    {
+
+    }
+
+    public void Render(SpriteBatch spriteBatch)
+    {
+        
+    }
+    #endregion
+}

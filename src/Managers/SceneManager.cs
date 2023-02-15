@@ -22,6 +22,8 @@ public class SceneManager
 
         // Subscribing to events
         MainMenuScene.SceneChangeEvent += OnSceneChange;
+        GameScene.SceneChangeEvent += OnSceneChange;
+        OverScene.SceneChangeEvent += OnSceneChange;
     }
     #endregion
 
@@ -41,12 +43,6 @@ public class SceneManager
                 break;
             case SceneType.Game:
                 CurrentScene = new GameScene();
-                break;
-            case SceneType.Setting:
-                CurrentScene = new SettingScene();
-                break;
-            case SceneType.Help:
-                CurrentScene = new HelpScene();
                 break;
             case SceneType.Over:
                 CurrentScene = new OverScene();

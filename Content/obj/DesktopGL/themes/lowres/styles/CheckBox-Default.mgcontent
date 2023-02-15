@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/../../../../../Users/family/.nuget/packages/geonbit.ui/4.1.0.1/content/Content/GeonBit.UI/themes/lowres/styles/CheckBox-Default.xml</SourceFile>
+  <SourceTime>2021-11-27T01:24:20+02:00</SourceTime>
+  <DestFile>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/bin/DesktopGL/themes/lowres/styles/CheckBox-Default.xnb</DestFile>
+  <DestTime>2023-02-15T07:02:00.8731034+02:00</DestTime>
+  <Importer>XmlImporter</Importer>
+  <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
+  <Processor>PassThroughProcessor</Processor>
+  <ProcessorTime>2022-07-26T13:44:56+02:00</ProcessorTime>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

@@ -2,16 +2,12 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-using GeonBit.UI;
-
 using System;
 
 namespace TheHorde;
 
 // TO-DO
 // Scenes(main menu, pause menu, settings, help, game over)
-// Upgrade the visuals(health bar, particles, hit points, which weapon currently equipped)
-// UI(buttons, checkboxes, sliders, texts)
 
 // PROBLEMS:
 // The collisions are not so pixel perfect as you had thought. FUCK COLLISIONS!
@@ -43,9 +39,6 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
-        // UI init
-        UserInterface.Initialize(Content, BuiltinThemes.hd);
-
         // Utility variables init
         ScreenWidth = 384;
         ScreenHeight = 512;
@@ -64,7 +57,6 @@ public class Game1 : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        #region Managers init
         // Assets init
         AssetManager.Instance().LoadAssets(Content);
 
@@ -76,16 +68,12 @@ public class Game1 : Game
 
         // Scenes init
         Scenes = new SceneManager();
-        #endregion
     }
 
     protected override void Update(GameTime gameTime)
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
-
-        // UI update
-        UserInterface.Active.Update(gameTime);
 
         // Scenes update
         Scenes.Update(gameTime);
@@ -108,11 +96,15 @@ public class Game1 : Game
         Scenes.Render(_spriteBatch);
         #endregion
 
-        // UI render
-        UserInterface.Active.Draw(_spriteBatch);
-
         _spriteBatch.End();
 
         base.Draw(gameTime);
+    }
+
+    // A util function that will center a text based on its font and contents
+    public static Vector2 CenterText(SpriteFont font, string text)
+    {
+        return new Vector2(Game1.ScreenWidth / 2 - font.MeasureString(text).X / 2, 
+                           Game1.ScreenHeight / 2 - font.MeasureString(text).Y / 2);
     }
 }

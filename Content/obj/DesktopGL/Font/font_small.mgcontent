@@ -3,7 +3,7 @@
   <SourceFile>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/Font/font_small.spritefont</SourceFile>
   <SourceTime>2023-02-13T02:45:28.0171212+02:00</SourceTime>
   <DestFile>C:/Dev/C# Projects/MonoGameProjects/TheHorde/Content/bin/DesktopGL/Font/font_small.xnb</DestFile>
-  <DestTime>2023-02-13T02:45:51.1971231+02:00</DestTime>
+  <DestTime>2023-02-15T07:02:35.059898+02:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
