@@ -22,7 +22,7 @@ public class EntityManager
     {
         /* Adding entities */
         // Player
-        Entities.Add(new Player(new Vector2(0.0f, Game1.ScreenHeight - 100.0f), AssetManager.Instance().GetSprite("Player"), 100));
+        Entities.Add(new Player(new Vector2(128.0f, Game1.ScreenHeight - 100.0f), AssetManager.Instance().GetSprite("Player"), 100));
     
         BarricadeHealth = BARRICADE_HEALTH;
 

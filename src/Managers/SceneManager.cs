@@ -14,7 +14,7 @@ public class SceneManager
     #region Constructor
     public SceneManager()
     {
-        Type = SceneType.Game;
+        Type = SceneType.Menu;
 
         CurrentScene = new MainMenuScene();
 
@@ -43,6 +43,9 @@ public class SceneManager
                 break;
             case SceneType.Game:
                 CurrentScene = new GameScene();
+                break;
+            case SceneType.Credits:
+                CurrentScene = new CreditsScene();
                 break;
             case SceneType.Over:
                 CurrentScene = new OverScene();
