@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using System;
 using System.Collections.Generic;
 
 namespace TheHorde;
@@ -15,17 +14,19 @@ public class EntityManager
 
     #region Consts
     private const int PLAYER_HEALTH = 100;
-    private const int BARRICADE_HEALTH = 400;
+    private const int BARRICADE_HEALTH = 100;
     #endregion
 
     #region Fields
-    public List<IEntity> Entities {get; private set;} = new List<IEntity>();
+    public List<IEntity> Entities {get; private set;}
     public int BarricadeHealth;
     #endregion
 
     #region Constructor
     public EntityManager()
     {
+        Entities = new List<IEntity>();
+
         /* Adding entities */
         // Player
         Entities.Add(new Player(new Vector2(128.0f, Game1.ScreenHeight - 100.0f), AssetManager.Instance().GetSprite("Player"), 100));
@@ -76,10 +77,12 @@ public class EntityManager
 
     public void OnBarricadeCollision(Zombie zombie)
     {
+        BarricadeHealth -= zombie.Damage;
+
+        zombie.Damage = 0;
+
         zombie.Velocity = new Vector2(0.0f, 0.0f);
         zombie.Anim.Stop();
-
-        BarricadeHealth -= zombie.Damage;
     }
     #endregion
 }

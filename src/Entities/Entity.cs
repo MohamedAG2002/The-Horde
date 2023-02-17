@@ -10,7 +10,7 @@ public abstract class IEntity
     #region Fields
     public abstract Vector2 Position {get; set;}
     public abstract Texture2D Texture {get; set;}
-    public abstract Rectangle Collider {get;}
+    public abstract Rectangle Collider {get; set;}
     public abstract int MaxHealth {get; set;}
     public abstract int Health {get; set;}
     public abstract bool IsActive {get; set;}
@@ -32,6 +32,7 @@ public class StaticEntity : IEntity
     public override Rectangle Collider
     {
         get { return new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height); }
+        set { Collider = value; }
     }
     public override int MaxHealth {get; set;}
     public override int Health {get; set;}

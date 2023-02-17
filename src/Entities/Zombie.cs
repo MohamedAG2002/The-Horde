@@ -42,7 +42,7 @@ public class Zombie : DynamicEntity
         Velocity = new Vector2(0.0f, speed);
 
         MaxDamage = damage;
-        Damage = 0;
+        Damage = MaxDamage;
         IsAbleToAttack = true;
 
         // Determines which of the zombie types it is from the texture
@@ -89,8 +89,6 @@ public class Zombie : DynamicEntity
             m_AttackCoolDown = MAX_ATTACK_COOLDOWN;
             IsAbleToAttack = true;
         }   
-        // Otherwise, make the zombie defenceless
-        else Damage = 0;
     
         // Plays the approriate sound when the zombie dies
         if(Health == 0) 
@@ -108,15 +106,15 @@ public class Zombie : DynamicEntity
             if(Vector2.Distance(Position, point) <= 4)
             {
                 BarricadeCollisionEvent?.Invoke(this);
-            
-                if(IsAbleToAttack)
+                
+                if(IsAbleToAttack)                    
                     BarricadeHitAudioEvent?.Invoke();
             }
         } 
     }
     
     public override void Render(SpriteBatch spriteBatch)
-    {
+    {   
         if(IsActive)
             Anim.Render(spriteBatch, Position);
     }

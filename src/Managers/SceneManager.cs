@@ -21,8 +21,8 @@ public class SceneManager
     {
         Score = new ScoreManager();
 
-        Type = SceneType.Over;
-        CurrentScene = new OverScene(Score);
+        Type = SceneType.Menu;
+        CurrentScene = new MainMenuScene();
 
         m_IsSceneChanged = false;
 
@@ -73,6 +73,9 @@ public class SceneManager
     public void OnSceneChange(SceneType sceneType)
     {
         Type = sceneType;
+
+        // Resetting the score when the game is replayed
+        if(Type == SceneType.Game) Score.Score = 0;
 
         m_IsSceneChanged = true;
     }

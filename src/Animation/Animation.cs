@@ -12,8 +12,8 @@ public class Animation
     public static int SpriteWidth;
     public static int SpriteHeight;
 
-    private bool m_IsAnimating;
     private int m_CurrentFrame;
+    private bool m_IsAnimating;
     private int m_Timer;
     private int m_AnimDirection;
     #endregion
@@ -29,8 +29,8 @@ public class Animation
         SpriteWidth = SpriteSheet.Width / Frames;
         SpriteHeight = SpriteSheet.Height;
 
-        m_IsAnimating = true;
         m_CurrentFrame = 0;
+        m_IsAnimating = true;
         m_Timer = 0;
         m_AnimDirection = 0;
     }

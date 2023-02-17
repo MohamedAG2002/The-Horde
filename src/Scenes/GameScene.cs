@@ -31,6 +31,7 @@ public class GameScene : IScene
         Collision = new CollisionManager();
 
         m_Score = score;
+        
         m_IsPaused = false;
         m_PauseText = "PAUSED";
         m_ToMenuText = "[M] MENU";
