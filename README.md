@@ -16,4 +16,4 @@ If you want to play around with the code or take a closer look at it, you need t
 
 On the other hand, if you want to just play the game, you can go to the game's itch.io page.
 
-itch.io: 
+itch.io: https://mohamedag.itch.io/the-horde
