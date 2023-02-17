@@ -5,7 +5,12 @@ namespace TheHorde;
 
 public class SceneManager
 {
+    #region Delegate
+    public delegate void SceneChange(SceneType sceneType);
+    #endregion
+
     #region Fields
+    public ScoreManager Score;
     public SceneType Type {get; set;}
     public IScene CurrentScene;
     private bool m_IsSceneChanged;
@@ -14,16 +19,19 @@ public class SceneManager
     #region Constructor
     public SceneManager()
     {
-        Type = SceneType.Menu;
+        Score = new ScoreManager();
 
-        CurrentScene = new MainMenuScene();
+        Type = SceneType.Over;
+        CurrentScene = new OverScene(Score);
 
         m_IsSceneChanged = false;
 
         // Subscribing to events
         MainMenuScene.SceneChangeEvent += OnSceneChange;
         GameScene.SceneChangeEvent += OnSceneChange;
+        CreditsScene.SceneChangeEvent += OnSceneChange;
         OverScene.SceneChangeEvent += OnSceneChange;
+        EntityManager.SceneChangeEvent += OnSceneChange;
     }
     #endregion
 
@@ -42,13 +50,13 @@ public class SceneManager
                 CurrentScene = new MainMenuScene();
                 break;
             case SceneType.Game:
-                CurrentScene = new GameScene();
+                CurrentScene = new GameScene(Score);
                 break;
             case SceneType.Credits:
                 CurrentScene = new CreditsScene();
                 break;
             case SceneType.Over:
-                CurrentScene = new OverScene();
+                CurrentScene = new OverScene(Score);
                 break;
         }
 

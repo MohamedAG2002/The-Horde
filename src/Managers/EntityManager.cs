@@ -1,12 +1,18 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+using System;
 using System.Collections.Generic;
 
 namespace TheHorde;
 
 public class EntityManager
 {
+    #region Events related
+    public delegate void SceneChange(SceneType sceneType);
+    public static event SceneChange SceneChangeEvent;
+    #endregion
+
     #region Consts
     private const int PLAYER_HEALTH = 100;
     private const int BARRICADE_HEALTH = 400;
@@ -54,6 +60,10 @@ public class EntityManager
             // Normal entity update
             entity.Update(gameTime);
         }
+
+        // Ending the game once the barricade is broken
+        if(BarricadeHealth <= 0)
+            SceneChangeEvent?.Invoke(SceneType.Over);
     }
 
     public void Render(SpriteBatch spriteBatch)

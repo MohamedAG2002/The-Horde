@@ -7,7 +7,8 @@ using System;
 namespace TheHorde;
 
 // TO-DO
-// Scenes(main menu, pause menu, settings, help, game over)
+// Finilize the game over scene
+// Add a new sounds(when changing the guns, interation with the UI)
 
 // PROBLEMS:
 // The collisions are not so pixel perfect as you had thought. FUCK COLLISIONS!

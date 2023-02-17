@@ -5,3 +5,6 @@ Thanks to Ocal for the Pistol and Shotgun textures
 Thanks to Michel Baradari for the gun shot sounds
 Thanks to artisticdude for the zombie sounds
 Thanks to Independent.nu for the wood breaking sounds
+
+
+They can all be found at opengameart.org

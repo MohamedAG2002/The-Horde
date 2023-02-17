@@ -50,16 +50,16 @@ public class MainMenuScene : IScene
         SpriteFont mediumFont = AssetManager.Instance().GetFont("Medium");
 
         // Title render
-        spriteBatch.DrawString(largeFont, m_Title, new Vector2(Game1.CenterText(largeFont, m_Title).X, 10.0f), Color.White);
+        spriteBatch.DrawString(largeFont, m_Title, new Vector2(Game1.CenterText(largeFont, m_Title).X, 10.0f), Color.CadetBlue);
 
         // Play text render
-        spriteBatch.DrawString(mediumFont, m_PlayText, new Vector2(Game1.CenterText(mediumFont, m_PlayText).X, 100.0f), Color.White);
+        spriteBatch.DrawString(mediumFont, m_PlayText, new Vector2(Game1.CenterText(mediumFont, m_PlayText).X, 180.0f), Color.CadetBlue);
 
         // Credits text render
-        spriteBatch.DrawString(mediumFont, m_CreditsText, new Vector2(Game1.CenterText(mediumFont, m_CreditsText).X, 150.0f), Color.White);
+        spriteBatch.DrawString(mediumFont, m_CreditsText, new Vector2(Game1.CenterText(mediumFont, m_CreditsText).X, 230.0f), Color.CadetBlue);
 
         // Exit text render
-        spriteBatch.DrawString(mediumFont, m_ExitText, new Vector2(Game1.CenterText(mediumFont, m_ExitText).X, 200.0f), Color.White);
+        spriteBatch.DrawString(mediumFont, m_ExitText, new Vector2(Game1.CenterText(mediumFont, m_ExitText).X, 280.0f), Color.CadetBlue);
     }
     #endregion
 }

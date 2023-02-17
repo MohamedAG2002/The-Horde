@@ -15,8 +15,8 @@ public class GameScene : IScene
     public EntityManager Entities;
     public SpawnManager Spawner;
     public CollisionManager Collision;
-    public ScoreManager Score;
     
+    private ScoreManager m_Score;
     private bool m_IsPaused;
     private string m_PauseText, m_ToMenuText;
 
@@ -24,13 +24,13 @@ public class GameScene : IScene
     #endregion
 
     #region Constructor
-    public GameScene()
+    public GameScene(ScoreManager score)
     {
         Entities = new EntityManager();
         Spawner = new SpawnManager(Entities, new Vector2(64.0f, 0.0f));
         Collision = new CollisionManager();
-        Score = new ScoreManager();
 
+        m_Score = score;
         m_IsPaused = false;
         m_PauseText = "PAUSED";
         m_ToMenuText = "[M] MENU";
@@ -58,7 +58,7 @@ public class GameScene : IScene
 
         Entities.Update(gameTime);
         Spawner.Update();
-        Score.Update();
+        m_Score.Update();
     }
     
     public void Render(SpriteBatch spriteBatch)
@@ -70,7 +70,9 @@ public class GameScene : IScene
         spriteBatch.DrawString(AssetManager.Instance().GetFont("Small"), "Barricade: " + Entities.BarricadeHealth, new Vector2(10.0f, 10.0f), Color.Black);
 
         // Score
-        spriteBatch.DrawString(AssetManager.Instance().GetFont("Small"), "Score: " + Score.Score, new Vector2(Game1.ScreenWidth - 75.0f, 10.0f), Color.Black);
+        string scoreText = "Score: " + m_Score.Score;
+        Vector2 midText = Game1.CenterText(AssetManager.Instance().GetFont("Small"), scoreText);
+        spriteBatch.DrawString(AssetManager.Instance().GetFont("Small"), scoreText, new Vector2(midText.X + 145.0f, 10.0f), Color.Black);
 
         // Pause menu
         if(m_IsPaused) PauseMenu(spriteBatch);
@@ -82,10 +84,10 @@ public class GameScene : IScene
         SpriteFont mediumFont = AssetManager.Instance().GetFont("Medium");
 
         // Pause title render
-        spriteBatch.DrawString(largeFont, m_PauseText, Game1.CenterText(largeFont, m_PauseText) - new Vector2(0.0f, 50.0f), Color.White);
+        spriteBatch.DrawString(largeFont, m_PauseText, Game1.CenterText(largeFont, m_PauseText) - new Vector2(0.0f, 50.0f), Color.CadetBlue);
 
         // To menu text render
-        spriteBatch.DrawString(mediumFont, m_ToMenuText, Game1.CenterText(mediumFont, m_ToMenuText), Color.White);
+        spriteBatch.DrawString(mediumFont, m_ToMenuText, Game1.CenterText(mediumFont, m_ToMenuText), Color.CadetBlue);
     }
     #endregion
 }
