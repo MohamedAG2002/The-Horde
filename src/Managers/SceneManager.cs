@@ -52,6 +52,9 @@ public class SceneManager
             case SceneType.Game:
                 CurrentScene = new GameScene(Score);
                 break;
+            case SceneType.Help:
+                CurrentScene = new HelpScene();
+                break;
             case SceneType.Credits:
                 CurrentScene = new CreditsScene();
                 break;

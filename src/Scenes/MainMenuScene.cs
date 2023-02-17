@@ -12,7 +12,7 @@ public class MainMenuScene : IScene
     #endregion
 
     #region Fields
-    private string m_Title, m_PlayText, m_CreditsText, m_ExitText;
+    private string m_Title, m_PlayText, m_HelpText, m_CreditsText, m_ExitText;
     private KeyboardState m_CurrentState, m_PreviousState;
     #endregion
 
@@ -21,6 +21,7 @@ public class MainMenuScene : IScene
     {
         m_Title = "The Horde";
         m_PlayText = "[ENTER] PLAY";
+        m_HelpText = "[H] Help";
         m_CreditsText = "[C] CREDITS";
         m_ExitText = "[ESC] EXIT";
 
@@ -39,6 +40,9 @@ public class MainMenuScene : IScene
         // From Menu to Game
         if(m_CurrentState.IsKeyDown(Keys.Enter) && m_PreviousState.IsKeyUp(Keys.Enter))
             SceneChangeEvent?.Invoke(SceneType.Game);
+        // From Menu to Help
+        else if(m_CurrentState.IsKeyDown(Keys.H) && m_PreviousState.IsKeyUp(Keys.H))
+            SceneChangeEvent?.Invoke(SceneType.Help);
         // From Menu to Credits
         else if(m_CurrentState.IsKeyDown(Keys.C) && m_PreviousState.IsKeyUp(Keys.C))
             SceneChangeEvent?.Invoke(SceneType.Credits);
@@ -55,11 +59,14 @@ public class MainMenuScene : IScene
         // Play text render
         spriteBatch.DrawString(mediumFont, m_PlayText, new Vector2(Game1.CenterText(mediumFont, m_PlayText).X, 180.0f), Color.CadetBlue);
 
+        // Help text render
+        spriteBatch.DrawString(mediumFont, m_HelpText, new Vector2(Game1.CenterText(mediumFont, m_HelpText).X, 230.0f), Color.CadetBlue);
+
         // Credits text render
-        spriteBatch.DrawString(mediumFont, m_CreditsText, new Vector2(Game1.CenterText(mediumFont, m_CreditsText).X, 230.0f), Color.CadetBlue);
+        spriteBatch.DrawString(mediumFont, m_CreditsText, new Vector2(Game1.CenterText(mediumFont, m_CreditsText).X, 280.0f), Color.CadetBlue);
 
         // Exit text render
-        spriteBatch.DrawString(mediumFont, m_ExitText, new Vector2(Game1.CenterText(mediumFont, m_ExitText).X, 280.0f), Color.CadetBlue);
+        spriteBatch.DrawString(mediumFont, m_ExitText, new Vector2(Game1.CenterText(mediumFont, m_ExitText).X, 330.0f), Color.CadetBlue);
     }
     #endregion
 }
