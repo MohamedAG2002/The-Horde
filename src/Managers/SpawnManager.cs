@@ -41,7 +41,7 @@ public class SpawnManager
         // Adding spawn points
         for(int i = 0; i < 6; i++)
         {
-            m_SpawnPoints.Add(new Vector2(i * Animation.SpriteWidth, 0.0f));
+            m_SpawnPoints.Add(new Vector2(i * 64.0f, 0.0f));
         }
 
         m_EntityManager = entityManager;

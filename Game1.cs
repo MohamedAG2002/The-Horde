@@ -7,12 +7,7 @@ using System;
 namespace TheHorde;
 
 // TO-DO
-// Finilize the game over scene
 // Add a new sounds(when changing the guns, interation with the UI)
-
-// PROBLEMS:
-// The collisions are not so pixel perfect as you had thought. FUCK COLLISIONS!
-// The barricade's health does not decrease when the zombie colides with it. The audio and the collision works, just not the health
 
 public class Game1 : Game
 {

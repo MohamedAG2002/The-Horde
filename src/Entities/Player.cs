@@ -16,7 +16,6 @@ public class Player : DynamicEntity
 
     #region Fields
     public List<Bullet> Ammo {get; private set;} = new List<Bullet>();
-    public Animation Anim {get; private set;}
     private bool m_IsAbleToShoot;
     private int m_ShotCoolDown;
     private BulletType m_CurrentWeapon;
@@ -32,7 +31,6 @@ public class Player : DynamicEntity
     {
         Velocity = new Vector2(210.0f, 0.0f);
         IsMoving = true;
-        Anim = new Animation(Texture, 4, 12);
     
         m_IsAbleToShoot = true;
         m_ShotCoolDown = MAX_PISTOL_COOLDOWN;
@@ -95,8 +93,7 @@ public class Player : DynamicEntity
 
     public override void Render(SpriteBatch spriteBatch)
     {
-        if(IsActive)
-            Anim.Render(spriteBatch, Position);
+        base.Render(spriteBatch);
         
         // Rendering the bullets
         foreach(var bullet in Ammo)
@@ -110,16 +107,10 @@ public class Player : DynamicEntity
     {
         // Moving to the left
         if(Keyboard.GetState().IsKeyDown(Keys.A) || Keyboard.GetState().IsKeyDown(Keys.Left))
-        {
-            Anim.Play();
             Position -= Velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
-        }
         // Moving to the right
         else if(Keyboard.GetState().IsKeyDown(Keys.D) || Keyboard.GetState().IsKeyDown(Keys.Right))
-        {
-            Anim.Play();
             Position += Velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
-        }
     }
 
     public void Shoot()

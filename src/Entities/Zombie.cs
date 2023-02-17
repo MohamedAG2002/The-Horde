@@ -16,7 +16,6 @@ public class Zombie : DynamicEntity
     public int Damage {get; set;}
     public bool IsAbleToAttack {get; set;}
     public ZombieType Type {get; private set;}
-    public Animation Anim {get; private set;}
 
     private int m_AttackCoolDown;
     private List<Vector2> m_BarricadePoints = new List<Vector2>();
@@ -42,32 +41,23 @@ public class Zombie : DynamicEntity
         Velocity = new Vector2(0.0f, speed);
 
         MaxDamage = damage;
-        Damage = MaxDamage;
+        Damage = 0;
         IsAbleToAttack = true;
 
         // Determines which of the zombie types it is from the texture
         if(texture == AssetManager.Instance().GetSprite("BasicZombie"))
-        {
             Type = ZombieType.Basic;
-            Anim = new Animation(AssetManager.Instance().GetSprite("BasicZombie"), 4, 10);
-        }
         else if(texture == AssetManager.Instance().GetSprite("BruteZombie"))
-        {
             Type = ZombieType.Brute;
-            Anim = new Animation(AssetManager.Instance().GetSprite("BruteZombie"), 4, 15);
-        }
         else 
-        {
             Type = ZombieType.Denizen;
-            Anim = new Animation(AssetManager.Instance().GetSprite("DenizenZombie"), 4, 5);
-        }
 
         m_AttackCoolDown = MAX_ATTACK_COOLDOWN;
 
         // Adding the barricade points for collision
         for(int i = 0; i < 26; i++)
         {
-            m_BarricadePoints.Add(new Vector2(i * Animation.SpriteWidth / 2.0f, Game1.ScreenHeight - 160.0f));
+            m_BarricadePoints.Add(new Vector2(i * 32.0f, Game1.ScreenHeight - 160.0f));
         }
     }
     #endregion
@@ -81,14 +71,14 @@ public class Zombie : DynamicEntity
         if(IsAbleToAttack)
             Attack();
 
-        base.Update(gameTime);
-
         // Allowing the zombie to attack once the cooldown has reached 0
         if(m_AttackCoolDown == 0)
         {
             m_AttackCoolDown = MAX_ATTACK_COOLDOWN;
             IsAbleToAttack = true;
-        }   
+        }  
+
+        base.Update(gameTime);
     
         // Plays the approriate sound when the zombie dies
         if(Health == 0) 
@@ -106,22 +96,16 @@ public class Zombie : DynamicEntity
             if(Vector2.Distance(Position, point) <= 4)
             {
                 BarricadeCollisionEvent?.Invoke(this);
-                
+
                 if(IsAbleToAttack)                    
                     BarricadeHitAudioEvent?.Invoke();
+                else Damage = 0;
             }
         } 
-    }
-    
-    public override void Render(SpriteBatch spriteBatch)
-    {   
-        if(IsActive)
-            Anim.Render(spriteBatch, Position);
     }
 
     public override void Move(GameTime gameTime)
     {
-        Anim.Play();
         base.Move(gameTime);
     }
 

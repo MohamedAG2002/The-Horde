@@ -133,7 +133,7 @@ public class DynamicEntity : StaticEntity
         if(IsMoving) Move(gameTime);
 
         // Clamping the position to the window's borders
-        Position = new Vector2(MathHelper.Clamp(Position.X, -20.0f, Game1.ScreenWidth - Animation.SpriteWidth + 15.0f), Position.Y);
+        Position = new Vector2(MathHelper.Clamp(Position.X, -20.0f, Game1.ScreenWidth - Texture.Width + 15.0f), Position.Y);
 
         base.Update(gameTime);
     }
