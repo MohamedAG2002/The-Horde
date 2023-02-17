@@ -29,6 +29,7 @@ public class SceneManager
         // Subscribing to events
         MainMenuScene.SceneChangeEvent += OnSceneChange;
         GameScene.SceneChangeEvent += OnSceneChange;
+        HelpScene.SceneChangeEvent += OnSceneChange;
         CreditsScene.SceneChangeEvent += OnSceneChange;
         OverScene.SceneChangeEvent += OnSceneChange;
         EntityManager.SceneChangeEvent += OnSceneChange;

@@ -6,9 +6,6 @@ using System;
 
 namespace TheHorde;
 
-// TO-DO
-// Add a new sounds(when changing the guns, interation with the UI)
-
 public class Game1 : Game
 {
     private GraphicsDeviceManager _graphics;
