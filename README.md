@@ -1,15 +1,15 @@
 # The Horde
-A game where you have to defend your stronghold against hordes of incoming zombies.
+A game where you must defend your stronghold against hordes of incoming zombies.
 You--the player--are equipped with the most advanced modern weapons since the apocalypse--a shotgun and a pistol. Use your arsenal to kill those zombies and prevent them from breaking the barricade at any cost.
 
 # Controls 
-The whole game is controled with the keyboard; the UI included. Anything you do in the game you do with the keyboard.
+The whole game is controlled with the keyboard, including the UI—anything you do in the game you do with the keyboard.
 
 To move the player use WASD or the ARROW KEYS.
 To shoot press SPACE.
-To switch your weapons use Q and E. The Q key equips the pistol while E equips the shotgun.
+To switch your weapons use Q and E. The Q key equips the pistol while the E key equips the shotgun.
 
-Prefer to the help screen in the game if your stuck.
+Prefer the help screen in the game if you're stuck.
 
 # How to use
 If you want to play around with the code or take a closer look at it, you need to install MonoGame(go to the MonoGame website for further instructions), and then just clone the project. 
